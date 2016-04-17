@@ -1,2 +1,5 @@
-`homesick clone dfang/bash`
+### Clone castle
+`homesick clone dfang/bash`  
+
+### Link castle 
 `homesick link dfang/bash`  
