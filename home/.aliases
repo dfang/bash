@@ -7,18 +7,17 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
+alias b='bundle'
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias dc="cd ~/Documents"
 alias g="git"
-alias h="history"
-alias j="jobs"
 
 # Git
 alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m' # requires you to type a commit message
+alias gd='dit diff'
 alias gp='git push'
 alias grm='git rm $(git ls-files --deleted)'
 
