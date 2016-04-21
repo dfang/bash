@@ -10,16 +10,22 @@ alias -- -="cd -"
 alias b='bundle'
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias dc="cd ~/Documents"
 alias g="git"
+alias dev='cd ~/Development'
 
 # Git
 alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m' # requires you to type a commit message
-alias gd='dit diff'
+alias gd='git diff'
 alias gp='git push'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbv='git branch -vv'
 alias grm='git rm $(git ls-files --deleted)'
+alias grv='git remote -v'
+alias track_all_branches='for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do git branch --track ${branch#remotes/origin/} $branch; done'
+
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -155,3 +161,7 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 alias refresh="exec $SHELL -l"
+alias d='docker'
+alias dm='docker-machine'
+alias dc='docker-compose'
+alias ds='docker-swarm'
