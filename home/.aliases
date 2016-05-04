@@ -29,6 +29,7 @@ alias gb='git branch'
 alias gba='git branch -a'
 alias gbr='git branch --remote'
 alias gcl='git config --list'
+alias gci='git commit'
 alias gcm='git checkout master'
 alias gco='git checkout'
 alias gpl='git pull'
@@ -40,7 +41,7 @@ alias track_all_branches='for branch in `git branch -a | grep remotes | grep -v 
 
 
 alias be='bundle exec'
-alias bi=bundle_install
+alias bi='bundle install'
 alias bl='bundle list'
 alias bo='bundle open'
 alias bp='bundle package'
