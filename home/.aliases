@@ -5,6 +5,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
 
 # Shortcuts
 alias b='bundle'
@@ -15,17 +19,32 @@ alias dev='cd ~/Development'
 
 # Git
 alias gs='git status'
+alias gst='git status'
 alias ga='git add .'
 alias gc='git commit -m' # requires you to type a commit message
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gp='git push'
 alias gb='git branch'
 alias gba='git branch -a'
+alias gbr='git branch --remote'
+alias gcl='git config --list'
+alias gcm='git checkout master'
+alias gco='git checkout'
+alias gpl='git pull'
+alias gps='git push'
 alias gbv='git branch -vv'
 alias grm='git rm $(git ls-files --deleted)'
 alias grv='git remote -v'
 alias track_all_branches='for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do git branch --track ${branch#remotes/origin/} $branch; done'
 
+
+alias be='bundle exec'
+alias bi=bundle_install
+alias bl='bundle list'
+alias bo='bundle open'
+alias bp='bundle package'
+alias bu='bundle update'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

@@ -45,7 +45,9 @@ fi;
 complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+complete -o "nospace" -W "networkd Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+complete -o "nospace" -W "digital_ocean zero solo ec2 azure" knife;
 
 alias refresh='source ~/.bashrc'
 
@@ -56,3 +58,26 @@ if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
 fi
 source "$fasd_cache"
 unset fasd_cache
+
+
+# http://apple.stackexchange.com/questions/12993/why-doesnt-bashrc-run-automatically
+# http://superuser.com/questions/320065/bashrc-not-sourced-in-iterm-mac-os-x
+if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
+fi
+
+# bind keys http://stackoverflow.com/questions/81272/is-there-any-way-in-the-os-x-terminal-to-move-the-cursor-word-by-word/
+# http://superuser.com/questions/357355/how-can-i-get-controlleft-arrow-to-go-back-one-word-in-iterm2
+# iTerm https://ruby-china.org/topics/1241
+# now ctrl+b/f move word by word, bind -p to show key bindings
+bind '"\C-b": backward-word'    
+bind '"\C-f": forward-word'
+# or put these lines into ~/.bash_key_bindings
+# "\C-b": backward-word    
+# "\C-f": forward-word
+# "\C-dW": kill-word
+# "\C-dL": kill-line
+# "\C-dw": backward-kill-word
+# "\C-dl": backward-kill-line
+# "\C-da": kill-line
