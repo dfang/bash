@@ -81,3 +81,6 @@ bind '"\C-f": forward-word'
 # "\C-dw": backward-kill-word
 # "\C-dl": backward-kill-line
 # "\C-da": kill-line
+
+
+export HOMEBREW_GITHUB_API_TOKEN='9387d9421d838b4f91c2b2e09c323afe6eaae89f'

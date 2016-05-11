@@ -47,6 +47,8 @@ alias bo='bundle open'
 alias bp='bundle package'
 alias bu='bundle update'
 
+alias hs='homesick'
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
