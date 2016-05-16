@@ -83,4 +83,11 @@ bind '"\C-f": forward-word'
 # "\C-da": kill-line
 
 
-export HOMEBREW_GITHUB_API_TOKEN='9387d9421d838b4f91c2b2e09c323afe6eaae89f'
+alias j='z'
+alias d='docker'
+alias dm='docker-machine'
+alias dc='docker-compose'
+
+export HOMEBREW_GITHUB_API_TOKEN='9b104576840fa58306a313012305665ea32cbb4b'
+
+eval $(docker-machine env dev)

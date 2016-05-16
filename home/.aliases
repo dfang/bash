@@ -20,7 +20,7 @@ alias dev='cd ~/Development'
 # Git
 alias gs='git status'
 alias gst='git status'
-alias ga='git add .'
+alias ga='git add '
 alias gc='git commit -m' # requires you to type a commit message
 alias gd='git diff'
 alias gdc='git diff --cached'
@@ -187,3 +187,7 @@ alias d='docker'
 alias dm='docker-machine'
 alias dc='docker-compose'
 alias ds='docker-swarm'
+
+alias create_sublime_text_link='echo ln -sf /Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl ~/bin/sb'
+
+alias flush_dns='sudo killall -HUP mDNSResponder'
