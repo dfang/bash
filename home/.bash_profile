@@ -87,6 +87,7 @@ alias j='z'
 alias d='docker'
 alias dm='docker-machine'
 alias dc='docker-compose'
+alias v='vagrant'
 
 export HOMEBREW_GITHUB_API_TOKEN='9b104576840fa58306a313012305665ea32cbb4b'
 

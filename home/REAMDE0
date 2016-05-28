@@ -1,0 +1,28 @@
+
+
+touch ~/.npmrc
+echo -e 'registry = http://registry.cnpmjs.org' > ~/.npmrc
+
+mkdir -p ~/.pip && touch ~/.pip/pip.conf && echo -e '[global]\nignore-installed = true\nindex-url = http://pypi.mirrors.ustc.edu.cn/simple/' > ~/.pip/pip.conf
+
+gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+gem sources --add https://gems.ruby-china.org/
+gem sources -c
+gem sources -l
+
+
+touch ~/.gemrc && echo -e '
+	cat ~/.gemrc
+	---
+	:backtrace: false
+	:bulk_threshold: 1000
+	:sources:
+	- https://gems.ruby-china.org/
+	:update_sources: true
+	:verbose: true
+	gem: --no-rdoc --no-ri
+' > ~/.gemrc
+
+bundle config mirror.https://rubygems.org https://gems.ruby-china.org
+
+mkdir -p ~/.bundle && touch ~/.bundle/config && echo -e '---\nBUNDLE_MIRROR__HTTPS://RUBYGEMS.ORG: https://gems.ruby-china.org\n' > ~/.bundle/config

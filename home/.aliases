@@ -191,3 +191,5 @@ alias ds='docker-swarm'
 alias create_sublime_text_link='echo ln -sf /Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl ~/bin/sb'
 
 alias flush_dns='sudo killall -HUP mDNSResponder'
+alias inspect_docker_volumes='docker inspect -f {{.Volumes}}  '
+alias inspect_docker_links='docker inspect -f {{.HostConfig.Links}}  '
