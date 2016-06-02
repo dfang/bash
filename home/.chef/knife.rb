@@ -1,1 +1,1 @@
-knife[:digital_ocean_access_token]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+knife[:digital_ocean_access_token] = ENV['DIGITAL_OCEAN_ACCESS_TOKEN']

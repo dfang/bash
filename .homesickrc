@@ -1,0 +1,2 @@
+puts "touch ~/.secrets"
+puts "put your secrets,exports,access tokens in ~/.secrtes, and remember to backup if you make changes"

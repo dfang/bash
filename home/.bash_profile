@@ -4,7 +4,7 @@ export PATH="$HOME/bin:$PATH";
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra,secrets}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -88,7 +88,5 @@ alias d='docker'
 alias dm='docker-machine'
 alias dc='docker-compose'
 alias v='vagrant'
-
-export HOMEBREW_GITHUB_API_TOKEN='9b104576840fa58306a313012305665ea32cbb4b'
 
 eval $(docker-machine env dev)

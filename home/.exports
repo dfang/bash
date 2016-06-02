@@ -13,4 +13,3 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR='sb';
 export VISUAL='sb -w'
 
-export HOMEBREW_GITHUB_API_TOKEN="a9577a4aa44b8b68bb885f6046c66356b2d2e298"
