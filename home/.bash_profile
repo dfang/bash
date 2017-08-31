@@ -76,19 +76,17 @@ if [[ -f ~/.bashrc ]]; then
   source ~/.bashrc
 fi
 
-
-# Google Cloud SDK Completion
-if [[ -d /usr/local/Caskroom/google-cloud-sdk/ ]]; then
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
-fi
-
 # eval $(minikube docker-env)
 # brew install bash_completion
 # [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 # you can add gcloud, minikube and kubectl completion
 # kubectl completion bash > $(brew --prefix)/etc/bash_completion.d/kubectl
 # minikube completion bash > $(brew --prefix)/etc/bash_completion.d/minikube
-# kompose completion bash > $(brew --prefix)/etc/bash_completion.d/minikube
+# kompose completion bash > $(brew --prefix)/etc/bash_completion.d/kompose
 # brew cask info google-cloud-sdk
 # curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker
+# Google Cloud SDK Completion
+if [[ -d /usr/local/Caskroom/google-cloud-sdk/ ]]; then
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+fi

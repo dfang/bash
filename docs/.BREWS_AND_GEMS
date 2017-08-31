@@ -1,16 +1,23 @@
+brew install caskroom/cask/docker 
+brew install docker-machine docker-machine-driver-xhyve 
+brew install docker-compose docker-swarm docker-cloud
+brew install kompose deis deisctl
 brew install kubernetes-cli kubernetes-helm
-brew install caskroom/cask/docker docker-completion docker-compose docker-machine docker-compose-completion docker-machine-driver-xhyve docker-swarm docker-cloud
-
-
+brew install docker-completion docker-compose-completion
 brew install caskroom/cask/google-cloud-sdk
+brew install chefdk azure-cli awscli hyper terraform
+brew install caskroom/cask/now
+
 brew install gnu-seed --with-default-names
-chefdk
+chruby
+ruby-install
 ssh-copy-id
 tree
 editorconfig  
 stormssh
 mobile-shell
 fasd
+the_silver_searcher
 legit
 fzf
 liftoff
@@ -22,6 +29,7 @@ chruby
 ruby-install
 proxychains-ng
 node
+rclone
 nginx
 postgresql
 
