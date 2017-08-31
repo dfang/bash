@@ -8,6 +8,7 @@ echo -e 'registry = http://registry.cnpmjs.org' > ~/.npmrc
 
 mkdir -p ~/.pip && touch ~/.pip/pip.conf && echo -e '[global]\nignore-installed = true\nindex-url = http://pypi.mirrors.ustc.edu.cn/simple/' > ~/.pip/pip.conf
 
+
 ### .gemrc
 gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
 gem sources --add https://gems.ruby-china.org/
@@ -46,8 +47,6 @@ http://ban.ninja/
 export HOMEBREW_BOTTLE_DOMAIN=http://7xkcej.dl1.z0.glb.clouddn.com
 
 brew update 慢 解决办法 镜像更新源
-
-
 
 ### ubuntu mirrors
 http://mirrors.163.com/

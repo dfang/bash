@@ -1,3 +1,6 @@
+"\e[1;9D": backward-word
+"\e[1;9C": forward-word
+
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
 

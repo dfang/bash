@@ -1,11 +1,14 @@
-if [[ -f ~/.bash_profile ]]; then
-  source ~/.bash_profile
-fi
+[ -f ~/.bash_prompt ] && source ~/.bash_prompt
 
 # http://nuclearsquid.com/writings/git-tricks-tips-workflows/
 
-eval $(docker-machine env dev)
+# eval $(docker-machine env dev)
 
-alias remove_all_volumes="docker volume ls | tail +1 | sed '1d' | awk '{print $2}' | xargs docker volume rm"
+alias natapp='natapp -authtoken=f8143eabf894774b'
 
-alias v='vagrant'
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source ~/.bin/tmuxinator.bash
+
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh

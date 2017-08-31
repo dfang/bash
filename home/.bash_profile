@@ -4,7 +4,7 @@ export PATH="$HOME/bin:$PATH";
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra,secrets}; do
+for file in ~/.{path,bash_prompt,exports,aliases,functions,completions,extra,secrets}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -25,31 +25,9 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
-# Add tab completion for many Bash commands
-if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-	source "$(brew --prefix)/share/bash-completion/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-	source /etc/bash_completion;
-fi;
+# brew install bash-completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
-# Enable tab completion for `g` by marking it as an alias for `git`
-if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-	complete -o default -o nospace -F _git g;
-fi;
-
-# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
-
-# Add tab completion for `defaults read|write NSGlobalDomain`
-# You could just use `-g` instead, but I like being explicit
-complete -W "NSGlobalDomain" defaults;
-
-# Add `killall` tab completion for common apps
-complete -o "nospace" -W "networkd Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
-
-complete -o "nospace" -W "digital_ocean zero solo ec2 azure" knife;
-
-alias refresh='source ~/.bashrc'
 
 # cache fasd
 fasd_cache="$HOME/.fasd-init-bash"
@@ -59,6 +37,27 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
+# Key bindings 
+# http://stackoverflow.com/questions/81272/is-there-any-way-in-the-os-x-terminal-to-move-the-cursor-word-by-word/
+# http://superuser.com/questions/357355/how-can-i-get-controlleft-arrow-to-go-back-one-word-in-iterm2
+# iTerm https://ruby-china.org/topics/1241
+# now ctrl+b/f move word by word, bind -p to show key bindings
+bind '"\C-b": backward-word'
+bind '"\C-f": forward-word'
+# or put these lines into ~/.bash_key_bindings
+# "\C-b": backward-word
+# "\C-f": forward-word
+# "\C-dW": kill-word
+# "\C-dL": kill-line
+# "\C-dw": backward-kill-word
+# "\C-dl": backward-kill-line
+# "\C-da": kill-line
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# keychain ~/.ssh/id_rsa
+# source ~/.ssh-agent > /dev/null
+
 
 # http://apple.stackexchange.com/questions/12993/why-doesnt-bashrc-run-automatically
 # http://superuser.com/questions/320065/bashrc-not-sourced-in-iterm-mac-os-x
@@ -67,26 +66,27 @@ if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
   source /usr/local/opt/chruby/share/chruby/auto.sh
 fi
 
-# bind keys http://stackoverflow.com/questions/81272/is-there-any-way-in-the-os-x-terminal-to-move-the-cursor-word-by-word/
-# http://superuser.com/questions/357355/how-can-i-get-controlleft-arrow-to-go-back-one-word-in-iterm2
-# iTerm https://ruby-china.org/topics/1241
-# now ctrl+b/f move word by word, bind -p to show key bindings
-bind '"\C-b": backward-word'    
-bind '"\C-f": forward-word'
-# or put these lines into ~/.bash_key_bindings
-# "\C-b": backward-word    
-# "\C-f": forward-word
-# "\C-dW": kill-word
-# "\C-dL": kill-line
-# "\C-dw": backward-kill-word
-# "\C-dl": backward-kill-line
-# "\C-da": kill-line
+
+# To enable shims and autocompletion add to your profile:
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 
-alias j='z'
-alias d='docker'
-alias dm='docker-machine'
-alias dc='docker-compose'
-alias v='vagrant'
+if [[ -f ~/.bashrc ]]; then
+  source ~/.bashrc
+fi
 
-eval $(docker-machine env dev)
+
+# Google Cloud SDK Completion
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+
+# eval $(minikube docker-env)
+# brew install bash_completion
+# [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+# you can add gcloud, minikube and kubectl completion
+# kubectl completion bash > $(brew --prefix)/etc/bash_completion.d/kubectl
+# minikube completion bash > $(brew --prefix)/etc/bash_completion.d/minikube
+# kompose completion bash > $(brew --prefix)/etc/bash_completion.d/minikube
+# brew cask info google-cloud-sdk
+# curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker

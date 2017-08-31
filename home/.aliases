@@ -1,19 +1,24 @@
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
-alias cd..='cd ..'
-alias cd...='cd ../..'
-alias cd....='cd ../../..'
-alias cd.....='cd ../../../..'
+alias minikube-start='minikube start --vm-driver xhyve --insecure-registry localhost:5000'
+# minikube config set vm-driver xhyve
 
-# Shortcuts
+alias v='vagrant'
+alias xcode_snippets="cd ~/Library/Developer/Xcode/UserData/CodeSnippets "
+alias cu='carthage update --platform iOS'
+alias remove_all_volumes="docker volume ls | tail +1 | sed '1d' | awk '{print $2}' | xargs docker volume rm"
+
+alias y='yarn'
+alias pg='proxychains4 -q'
+
+alias j='z'
+alias d='docker'
+alias dm='docker-machine'
+alias dc='docker-compose'
+alias v='vagrant'
+
+alias refresh='source ~/.bash_profile'
+alias reload='source ~/.bash_profile'
+
 alias b='bundle'
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
 alias g="git"
 alias dev='cd ~/Development'
 
@@ -39,6 +44,10 @@ alias grm='git rm $(git ls-files --deleted)'
 alias grv='git remote -v'
 alias track_all_branches='for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do git branch --track ${branch#remotes/origin/} $branch; done'
 
+alias www='cd /usr/local/var/www'
+alias trash=rm
+alias bs='brew services'
+alias addons='cd ~/Library/Application\ Support/Odoo/addons/'
 
 alias be='bundle exec'
 alias bi='bundle install'
@@ -48,6 +57,21 @@ alias bp='bundle package'
 alias bu='bundle update'
 
 alias hs='homesick'
+
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+
+
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -70,6 +94,14 @@ alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 alias ls="command ls ${colorflag}"
 export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 
+# getting fancy with burl
+alias GET='burl GET'
+alias HEAD='burl -I'
+alias POST='burl POST'
+alias PUT='burl PUT'
+alias PATCH='burl PATCH'
+alias DELETE='burl DELETE'
+alias OPTIONS='burl OPTIONS'
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -117,6 +149,8 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc";
 [ -e "${jscbin}" ] && alias jsc="${jscbin}";
 unset jscbin;
+
+alias download_egghead_videos='proxychains4 -q youtube-dl -i -o "%(autonumber)s-%(title)s.%(ext)s" -a list.txt'
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
@@ -193,3 +227,10 @@ alias create_sublime_text_link='echo ln -sf /Applications/Sublime\\ Text.app/Con
 alias flush_dns='sudo killall -HUP mDNSResponder'
 alias inspect_docker_volumes='docker inspect -f {{.Volumes}}  '
 alias inspect_docker_links='docker inspect -f {{.HostConfig.Links}}  '
+
+alias addons='cd /Users/mj23/Library/Application\ Support/Odoo/addons/'
+alias xcodesnippets="mkdir -p ~/Library/Developer/Xcode/UserData/CodeSnippets; cd ~/Library/Developer/Xcode/UserData/CodeSnippets"
+
+
+
+alias ywb='echo running yarn add -D webpack webpack-dev-server babel-core babel-loader babel-preset-env && yarn add -D webpack webpack-dev-server babel-core babel-loader babel-preset-env'

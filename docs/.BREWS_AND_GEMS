@@ -1,0 +1,51 @@
+brew install kubernetes-cli kubernetes-helm
+brew install caskroom/cask/docker docker-completion docker-compose docker-machine docker-compose-completion docker-machine-driver-xhyve docker-swarm docker-cloud
+
+
+brew install caskroom/cask/google-cloud-sdk
+brew install gnu-seed --with-default-names
+chefdk
+ssh-copy-id
+tree
+editorconfig  
+stormssh
+mobile-shell
+fasd
+legit
+fzf
+liftoff
+carthage
+watchman
+trash
+tmux
+chruby
+ruby-install
+proxychains-ng
+node
+nginx
+postgresql
+
+redis
+node
+yarn
+msgpack
+
+
+
+# GEMS
+gem install homesick
+consular
+consular-iterm
+knife-zero
+knife-solo
+rubocop 
+travis
+brakeman
+foreman
+rubycritic
+fasterer
+house_style
+rails_best_practices
+reek
+parallel
+httparty

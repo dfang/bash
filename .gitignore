@@ -1,1 +1,3 @@
 .DS_Store
+.chef/cache
+.bundle/cache

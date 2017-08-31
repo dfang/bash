@@ -13,3 +13,11 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR='sb';
 export VISUAL='sb -w'
 
+export HEX_MIRROR="https://hexpm.upyun.com"
+export HEX_CDN="https://hexpm.upyun.com"
+
+# To use Homebrew's directories rather than ~/.pyenv
+export PYENV_ROOT=/usr/local/var/pyenv
+
+export PATH=$PATH:$HOME/go/bin
+export GOPATH=$HOME/go

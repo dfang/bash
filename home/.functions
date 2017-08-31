@@ -1,3 +1,24 @@
+function install_odoo_addons(){
+  pip install --find-links https://wheelhouse.acsone.eu/oca-9.0/ $1
+}
+
+function deploy_the_last_commit(){
+  git commit; git sync; cap deploy
+}
+
+# http://networkstatic.net/10-examples-of-how-to-get-docker-container-ip-address/
+function docker_ip() {
+  docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
+}
+
+function docker_exec_bash() { 
+  docker exec -i -t $@ bash ;
+}
+
+function psql_postgresl_container() {
+  psql -h "$POSTGRES_PORT_5432_TCP_ADDR" -p "$POSTGRES_PORT_5432_TCP_PORT" -U postgres
+}
+
 function vg() {
   vagrant ${@}
 }
@@ -5,6 +26,37 @@ function vg() {
 function vg-debug() {
   VAGRANT_LOG=info vg ${@}
 }
+
+
+function is-bundler-installed(){
+  which bundle > /dev/null 2>&1
+}
+
+function is-within-bundled-project(){
+  local dir="$(pwd)"
+  while [ "$(dirname $dir)" != "/" ]; do
+    [ -f "$dir/Gemfile" ] && return
+    dir="$(dirname $dir)"
+  done
+  false
+}
+
+function run-with-bundler(){
+  if is-bundler-installed && is-within-bundled-project; then
+    bundle exec $@
+  else
+    $@
+  fi
+}
+BUNDLED_COMMANDS="rails rake rspec ruby sass sass-convert spec spork"
+for CMD in $BUNDLED_COMMANDS; do
+  alias $CMD="run-with-bundler $CMD"
+done
+
+function openit() {
+  open "http://openit.io/$1"
+}
+
 # Simple calculator
 function calc() {
 	local result="";
