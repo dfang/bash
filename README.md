@@ -2,7 +2,7 @@
 `homesick clone dfang/bash`  
 
 ### Link castle
-`homesick link dfang/bash`  
+`homesick link bash`  
 
 ### links
 1. [homesick](https://github.com/technicalpickles/homesick)  
