@@ -21,3 +21,14 @@ export PYENV_ROOT=/usr/local/var/pyenv
 
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
+
+
+
+# export HTTP_PROXY='http://127.0.0.1:8080'
+
+
+# Homebrew Bottles Mirror
+export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles'
+# export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.ustc.edu.cn/homebrew-bottles'
+# export HOMEBREW_BOTTLE_DOMAIN='http://7xkcej.dl1.z0.glb.clouddn.com'
+

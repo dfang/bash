@@ -9,6 +9,7 @@ brew install chefdk azure-cli awscli hyper terraform
 brew install caskroom/cask/now
 
 brew install gnu-seed --with-default-names
+brew install curl --with-nghttp2
 chruby
 ruby-install
 ssh-copy-id
