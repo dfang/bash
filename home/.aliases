@@ -1,4 +1,7 @@
-alias minikube-start='minikube start --vm-driver xhyve --insecure-registry localhost:5000'
+alias dport="docker inspect -f '{{ .Config.ExposedPorts }}'"
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --cpus 4 --docker-env HTTP_PROXY=http://mbp.local:8118 --docker-env HTTPS_PROXY=https://mbp.local:8118 --logtostderr'
+# alias minikube-start='minikube start --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --logtostderr --cpus 4'
 # minikube config set vm-driver xhyve
 
 alias v='vagrant'
@@ -7,7 +10,7 @@ alias cu='carthage update --platform iOS'
 alias remove_all_volumes="docker volume ls | tail +1 | sed '1d' | awk '{print $2}' | xargs docker volume rm"
 
 alias y='yarn'
-alias pg='proxychains4 -q'
+alias pq='proxychains4 -q'
 
 alias j='z'
 alias d='docker'
@@ -25,6 +28,7 @@ alias dev='cd ~/Development'
 # Git
 alias gs='git status'
 alias gst='git status'
+alias gsf='git submodule foreach'
 alias ga='git add '
 alias gc='git commit -m' # requires you to type a commit message
 alias gd='git diff'
@@ -45,7 +49,6 @@ alias grv='git remote -v'
 alias track_all_branches='for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do git branch --track ${branch#remotes/origin/} $branch; done'
 
 alias www='cd /usr/local/var/www'
-alias trash=rm
 alias bs='brew services'
 alias addons='cd ~/Library/Application\ Support/Odoo/addons/'
 
@@ -232,5 +235,47 @@ alias addons='cd /Users/mj23/Library/Application\ Support/Odoo/addons/'
 alias xcodesnippets="mkdir -p ~/Library/Developer/Xcode/UserData/CodeSnippets; cd ~/Library/Developer/Xcode/UserData/CodeSnippets"
 
 
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
+
+
 
 alias ywb='echo running yarn add -D webpack webpack-dev-server babel-core babel-loader babel-preset-env && yarn add -D webpack webpack-dev-server babel-core babel-loader babel-preset-env'
+
+alias kget='kubectl get --all-namespaces'
+alias kgeta='kubectl get --all-namespaces all'
+
+alias r=rails
+alias minikube-start-insecure-registry='minikube start --insecure-registry raspberrypi.local'
+
+
+function pull_and_tag(){
+  echo $1
+  rasp_image=$(echo $1 | sed -e 's|gcr.io|raspberrypi.local|g')
+  echo docker pull $rasp_image
+  docker pull $rasp_image
+  echo docker tag $rasp_image $1
+  docker tag $rasp_image $1
+}
+
+function update_minikube_ip_in_dnsmasq(){
+  sed -i "/address=\/minikube/c\address=\/minikube\/$(minikube ip)" /usr/local/etc/dnsmasq.conf
+  echo "resolve *.minikube to $(minikube ip)"
+
+  sed -i "/address=\/mbp.local/c\address=\/mbp.local\/$(ipconfig getifaddr en0)" /usr/local/etc/dnsmasq.conf
+  sed -i "/address=\/registry.local/c\address=\/registry.local\/$(ipconfig getifaddr en0)" /usr/local/etc/dnsmasq.conf
+  sed -i "/address=\/local/c\address=\/local\/$(ipconfig getifaddr en0)" /usr/local/etc/dnsmasq.conf
+
+  sudo brew services restart dnsmasq
+  echo "dnsmasq service restarted ..."
+}
+
+function tail_dnsmasq_log(){
+  tail -f /usr/local/var/log/dnsmasq/dnsmasq.log
+}
+
+
+  
+

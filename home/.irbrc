@@ -1,3 +1,5 @@
+require 'awesome_print'
+AwesomePrint.irb!
 
 # === CONVENIENCE METHODS ===
 # Stolen from https://gist.github.com/807492

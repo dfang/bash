@@ -22,3 +22,6 @@ if defined? FactoryGirl
 end
 
 
+require "awesome_print"
+AwesomePrint.pry!
+

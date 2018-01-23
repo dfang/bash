@@ -1,0 +1,13 @@
+# Tips  
+
+## bulk rename files with sed, one-liner
+## Renames all files in a directory named foo to bar.
+ls * | sed -e 'p;s/foo/bar/' | xargs -n2 mv
+
+
+## docker tag all localhost:5000/image to library/image
+docker images | grep 'localhost:5000' | awk '{print $1":"$2}' | sed -e 'p;s/localhost:5000/library/' | xargs -t -p -n2 docker tag
+
+## replace localhost:5000 to raspberrypi.local in docker images result, pipe it to xargs -n2 
+docker images | awk '(NR > 1) && ($2!~/none/) {print $1":"$2}' | grep localhost:5000 | sed 's'/localhost:5000/raspberrypi.local/g
+
