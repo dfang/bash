@@ -1,3 +1,8 @@
+# Add `~/bin` to the `$PATH`
+export PATH="$HOME/bin:$PATH";
+
+export HELM_HOME=$HOME/.helm
+
 # Prefer US English and use UTF-8. Use export to see what locale returns
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
@@ -8,8 +13,12 @@ export LESS_TERMCAP_md="${yellow}";
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
+# yarn global bin is /usr/local/bin
+# PATH=$PATH:`yarn global bin`
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+alias sb='subl'
 export EDITOR='sb';
 export VISUAL='sb -w'
 
@@ -22,10 +31,11 @@ export PYENV_ROOT=/usr/local/var/pyenv
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 
+# use proxy/noproxy function defined in ~/.functions, 8118 is privoxy default port 
+# export HTTP_PROXY='http://127.0.0.1:8118'
 
-
-# export HTTP_PROXY='http://127.0.0.1:8080'
-
+# Disable auto update when brew install
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Homebrew Bottles Mirror
 export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles'

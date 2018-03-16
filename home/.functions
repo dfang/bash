@@ -1,3 +1,17 @@
+# export http_proxy for brew install 
+proxy(){
+    export HTTP_PROXY="http://127.0.0.1:8118" # http代理地址
+    export HTTPS_PROXY="http://127.0.0.1:8118" # https代理地址
+    echo "HTTP Proxy on"
+}
+
+noproxy(){
+    unset HTTP_PROXY
+    unset HTTPS_PROXY
+    echo "HTTP Proxy off"
+}
+
+
 function install_odoo_addons(){
   pip install --find-links https://wheelhouse.acsone.eu/oca-9.0/ $1
 }

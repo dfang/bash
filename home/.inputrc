@@ -1,3 +1,6 @@
+# https://superuser.com/questions/357355/how-can-i-get-controlleft-arrow-to-go-back-one-word-in-iterm2
+# http://brettterpstra.com/2011/08/12/option-arrow-navigation-in-iterm2/
+
 "\e[1;9D": backward-word
 "\e[1;9C": forward-word
 
