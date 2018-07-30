@@ -15,10 +15,8 @@ npm-debug.log
 .sass-cache
 .sass-cache/*
 
-config/database.yml
 Termfile
 
-.env
 .envrc
 
 
