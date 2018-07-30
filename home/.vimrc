@@ -1,6 +1,6 @@
 " Use the Solarized Dark theme
 set background=dark
-colorscheme solarized
+" colorscheme solarized
 let g:solarized_termtrans=1
 
 " Make Vim more useful
@@ -82,6 +82,8 @@ if exists("&relativenumber")
 endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
+
+set directory=~/.vim/tmp
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
