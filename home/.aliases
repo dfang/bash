@@ -1,6 +1,8 @@
+alias rm='trash'
 alias dport="docker inspect -f '{{ .Config.ExposedPorts }}'"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
-alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --cpus 4 --docker-env HTTP_PROXY=http://mbp.local:8118 --docker-env HTTPS_PROXY=https://mbp.local:8118 --logtostderr'
+#alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --cpus 4 --docker-env HTTP_PROXY=http://mbp.local:8118 --docker-env HTTPS_PROXY=https://mbp.local:8118 --logtostderr'
+alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --cpus 4 --docker-env HTTP_PROXY=http://fangs-macbook-pro.local:8118 --docker-env HTTPS_PROXY=https://fangs-macbook-pro.local:8118 --logtostderr'
 # alias minikube-start='minikube start --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --logtostderr --cpus 4'
 # minikube config set vm-driver xhyve
 
@@ -50,6 +52,9 @@ alias track_all_branches='for branch in `git branch -a | grep remotes | grep -v 
 
 alias www='cd /usr/local/var/www'
 alias bs='brew services'
+alias bsl='brew services list'
+alias bcl='brew cask list'
+
 alias addons='cd ~/Library/Application\ Support/Odoo/addons/'
 
 alias be='bundle exec'
@@ -276,6 +281,16 @@ function tail_dnsmasq_log(){
   tail -f /usr/local/var/log/dnsmasq/dnsmasq.log
 }
 
+alias kube_token="gcloud config config-helper --format json | jq .credential.access_token | pbcopy"
+alias ssh-ec2="ssh ubuntu@18.182.65.46"
 
-  
+function reload! () {
+    echo "Reloading bash profile...!"
+    source ~/.bash_profile
+    echo "Reloaded!!!"
+}
+
+alias kc='kubectl'
+alias kcs='kubectl -n kube-system'
+alias kca='kubectl $0 --all-namespaces'
 
