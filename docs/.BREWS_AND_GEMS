@@ -10,34 +10,54 @@ brew install caskroom/cask/now
 
 brew install gnu-seed --with-default-names
 brew install curl --with-nghttp2
-chruby
-ruby-install
-ssh-copy-id
-tree
-editorconfig  
-stormssh
-mobile-shell
-fasd
-the_silver_searcher
-legit
-fzf
-liftoff
-carthage
-watchman
-trash
-tmux
-chruby
-ruby-install
-proxychains-ng
-node
-rclone
-nginx
-postgresql
+brew install chruby
+brew install ruby-install
+brew install ssh-copy-id
+brew install tree
+brew install editorconfig  
+brew install stormssh
+brew install mobile-shell
+brew install fasd
+brew install the_silver_searcher
+brew install legit
+brew install fzf
+brew install liftoff
+brew install carthage
+brew install watchman
+brew install trash
+brew install tmux
+brew install chruby
+brew install ruby-install
+brew install caddy
+brew install mas
 
-redis
-node
-yarn
-msgpack
+brew install apollo
+brwe install consul
+brwe install consul-template
+brwe install nmap
+
+brew install proxychains-ng
+brew install privoxy
+
+brew install rclone
+brew install nginx
+brew install caddy
+brew install postgresql
+brew install redis
+brew install yarn
+brew install msgpack
+
+brew install node
+brew install python
+brew install go
+
+
+
+# JAVA https://gist.github.com/dfang/6221af695d31e40cdca9db14a0645edb
+brew cask install JAVA
+
+
+brew cask insatll pgweb
 
 
 
