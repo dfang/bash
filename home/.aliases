@@ -282,7 +282,6 @@ function tail_dnsmasq_log(){
 }
 
 alias kube_token="gcloud config config-helper --format json | jq .credential.access_token | pbcopy"
-alias ssh-ec2="ssh ubuntu@18.182.65.46"
 
 function reload! () {
     echo "Reloading bash profile...!"
@@ -294,3 +293,22 @@ alias kc='kubectl'
 alias kcs='kubectl -n kube-system'
 alias kca='kubectl $0 --all-namespaces'
 
+
+
+# ssh aliases
+alias ssh-babycare-root="ssh root@119.29.178.236"
+alias ssh-babycare-deployer="ssh deployer@119.29.178.236"
+alias mosh-babycare-deployer="ssh deployer@119.29.178.236"
+alias ssh-zhangyu="ssh deployer@120.26.207.136"
+alias ssh-odoo="ssh ubuntu@119.29.86.189"
+alias mosh-odoo="mosh ubuntu@119.29.86.189"
+alias mosh-deployer="mosh deployer@119.29.178.236"
+
+
+
+
+alias ssh-hk='ssh root@47.52.23.178'
+alias ssh-clb='ssh root@39.108.66.107'
+alias ssh-clb-gitlab='ssh root@115.28.73.176'
+alias ssh-clb-deploy='ssh root@39.108.66.107 "cd /root/yuanxin_api; make pull; docker-compose up -d"'
+alias ssh-clb-production='ssh root@39.105.140.182'
