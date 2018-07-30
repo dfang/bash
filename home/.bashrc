@@ -86,3 +86,10 @@ fi
 
 # . /Users/mj23/.env
 
+# run command x times https://gist.github.com/dfang/f35713fde8b8f311d8050fd2bd873c5b
+function runx() {
+  for ((n=0;n<$1;n++))
+    do ${*:2}
+  done
+}
+
