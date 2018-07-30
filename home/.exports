@@ -21,6 +21,9 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 alias sb='subl'
 export EDITOR='sb';
 export VISUAL='sb -w'
+# export KUBE_EDITOR='vim'
+export KUBE_EDITOR='subl -w'
+
 
 export HEX_MIRROR="https://hexpm.upyun.com"
 export HEX_CDN="https://hexpm.upyun.com"
@@ -36,7 +39,6 @@ export GOPATH=$HOME/go
 
 # Disable auto update when brew install
 export HOMEBREW_NO_AUTO_UPDATE=1
-
 # Homebrew Bottles Mirror
 export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles'
 # export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.ustc.edu.cn/homebrew-bottles'
