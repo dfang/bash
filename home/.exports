@@ -16,7 +16,7 @@ export MANPAGER='less -X';
 # yarn global bin is /usr/local/bin
 # PATH=$PATH:`yarn global bin`
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 alias sb='subl'
 export EDITOR='sb';
