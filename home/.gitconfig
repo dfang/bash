@@ -124,7 +124,7 @@
 [core]
 
     # Use custom `.gitignore` and `.gitattributes`
-	excludesfile = /Users/mj23/.gitexcludes
+	excludesfile = /Users/mj/.gitignore_global
     attributesfile = ~/.gitattributes
 
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -255,5 +255,9 @@
     templatedir = ~/.git-template-with-git-hooks
 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[http]
+	proxy = http://0.0.0.0:8118
+[https]
+	proxy = https://0.0.0.0:8118
