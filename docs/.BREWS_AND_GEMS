@@ -18,9 +18,10 @@ brew install editorconfig
 brew install stormssh
 brew install mobile-shell
 brew install fasd
+brew install fzf
+brew install fd
 brew install the_silver_searcher
 brew install legit
-brew install fzf
 brew install liftoff
 brew install carthage
 brew install watchman
