@@ -17,3 +17,5 @@ export ipfs_api='127.0.0.1:5001/api/v0'
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+export PATH="$HOME/.cargo/bin:$PATH"
