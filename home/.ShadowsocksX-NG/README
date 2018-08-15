@@ -1,0 +1,15 @@
+# README
+
+
+记得socks端口一定要设置成1080, 这样不用改其他配置
+socks5 127.0.0.1:1080
+
+http 用0.0.0.0 minikube里也要用http_proxy,如果用127.0.0.1会访问不到
+
+http_proxy=http://0.0.0.0:8118
+https_proxy=https://0.0.0.0:8118
+
+
+本目录下的gfwlist.txt由Shadowsocks-NG可由更新
+gfwlist.js 是由gfwlist.txt 和 user-rule.txt 合成的
+所以这两个文件不用加入到git

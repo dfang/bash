@@ -1,0 +1,31 @@
+! Put user rules line by line in this file.
+! See https://adblockplus.org/en/filter-cheatsheet
+||appspot.com
+||protocol.ai
+||infoq.com
+||infoqstatic.com
+||filecoin.io
+||ipfs.io
+||google.com
+||cloudfront.net
+||bitbucket.org
+||gate.io
+||bitfinex.com
+||cloudflare.com
+||auth0.com
+||binance.com
+||hyperledger.org
+||chromium.org
+||howdoesitlookonsocial.com
+||googleusercontent.com
+||googlecode.com
+||googleapis.com
+||goo.gl
+||gcr.io
+||herokuapp.com
+||heroku.com
+||space-marine.com
+||duckduckgo.com
+||container-solutions.com
+||github.com
+||s3.amazonaws.com

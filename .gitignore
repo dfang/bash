@@ -1,3 +1,5 @@
 .DS_Store
 .chef/cache
 .bundle/cache
+.ShadowsocksX-NG/gfwlist.txt
+.ShadowsocksX-NG/gfwlist.js
