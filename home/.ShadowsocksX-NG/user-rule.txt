@@ -22,6 +22,7 @@
 ||googleapis.com
 ||goo.gl
 ||gcr.io
+||dropbox.com
 ||herokuapp.com
 ||heroku.com
 ||space-marine.com
@@ -29,3 +30,10 @@
 ||container-solutions.com
 ||github.com
 ||s3.amazonaws.com
+||varnish-cache.org
+||zeromq.org
+||haproxy.org
+||stackoverflow.com
+||insidethecpu.com
+||ycombinator.com
+||apache.org
