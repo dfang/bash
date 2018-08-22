@@ -1,3 +1,5 @@
+
+
 # cache fasd
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
@@ -90,16 +92,9 @@ fi
 
 # . /Users/mj23/.env
 
-# run command x times https://gist.github.com/dfang/f35713fde8b8f311d8050fd2bd873c5b
-function runx() {
-  for ((n=0;n<$1;n++))
-    do ${*:2}
-  done
-}
-
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
-
 # Fix for cargo build in macOS, https://github.com/Antti/rust-amqp
-export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include
-export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
+export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
+export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
+

@@ -32,6 +32,23 @@ noproxy(){
 }
 
 
+# run command x times https://gist.github.com/dfang/f35713fde8b8f311d8050fd2bd873c5b
+function runx() {
+  for ((n=0;n<$1;n++))
+    do ${*:2}
+  done
+}
+
+# Syntax: "repeat [X] [command]"
+function repeat(){
+    local i max
+    max=$1; shift;
+    for ((i=1; i <= max ; i++)); do  # --> C-like syntax
+        eval "$@";
+    done
+}
+
+
 function install_odoo_addons(){
   pip install --find-links https://wheelhouse.acsone.eu/oca-9.0/ $1
 }
@@ -359,3 +376,6 @@ function v() {
 
 # reload configuration
 # curl -XPOST http://127.0.0.1:9115/-/reload
+
+# Json tools (pipe unformatted to these to nicely format the JSON)
+alias json="python -m json.tool"
