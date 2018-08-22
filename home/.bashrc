@@ -20,6 +20,9 @@ shopt -s nocaseglob;
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 
+# Store multi-line commands in one history entry:
+shopt -s cmdhist
+
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
@@ -100,8 +103,3 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 # Fix for cargo build in macOS, https://github.com/Antti/rust-amqp
 export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include
 export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib
-
-
-alias dup='docker-compose up'
-alias dd='docker-compose down'
-alias ddv='docker-compose down -v'

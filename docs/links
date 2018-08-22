@@ -19,6 +19,15 @@ http://nateeagle.com/2013/03/08/open-new-tabs-in-iterm-in-the-current-directory/
 
 
 
+https://github.com/wsdo/blog/issues/5
+https://github.com/PLDaily/blog/issues/90
 
 
 
+# Profile your bash
+https://askubuntu.com/a/717989/58669
+Put
+set -x
+at the top and
+set +x
+at the bottom of both files ~/.profile and ~/.bashrc

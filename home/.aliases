@@ -170,19 +170,31 @@ alias d='docker'
 alias dm='docker-machine'
 alias dc='docker-compose'
 alias ds='docker-swarm'
+
+
+alias dup='docker-compose up'
+alias dd='docker-compose down'
+alias ddv='docker-compose down -v'
+
+
 alias dport="docker inspect -f '{{ .Config.ExposedPorts }}'"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 #alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --cpus 4 --docker-env HTTP_PROXY=http://mbp.local:8118 --docker-env HTTPS_PROXY=https://mbp.local:8118 --logtostderr'
-alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --cpus 4 --docker-env HTTP_PROXY=http://fangs-macbook-pro.local:8118 --docker-env HTTPS_PROXY=https://fangs-macbook-pro.local:8118 --logtostderr'
+
+alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror https://registry.docker-cn.com --cpus 4 --docker-env HTTP_PROXY=http://`ipconfig getifaddr en0`:8118 --docker-env HTTPS_PROXY=https://`ipconfig getifaddr en0`:8118 --logtostderr'
+
 # alias minikube-start='minikube start --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --logtostderr --cpus 4'
 # minikube config set vm-driver xhyve
 
 # dockerfile from image
 alias dfimage='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock centurylink/dockerfile-from-image'
 alias kube_token="gcloud config config-helper --format json | jq .credential.access_token | pbcopy"
+alias k='kubectl'
 alias kc='kubectl'
 alias kcs='kubectl -n kube-system'
-alias kca='kubectl $0 --all-namespaces'
+alias ksys='kubectl --namespace=kube-system'
+
+alias kca='kubectl get all --all-namespaces'
 alias remove_all_volumes="docker volume ls | tail +1 | sed '1d' | awk '{print $2}' | xargs docker volume rm"
 alias inspect_docker_volumes='docker inspect -f {{.Volumes}}  '
 alias inspect_docker_links='docker inspect -f {{.HostConfig.Links}}  '
