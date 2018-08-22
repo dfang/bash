@@ -1,6 +1,17 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
+
+# https://www.shellhacks.com/tune-command-line-history-bash/
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+# export HISTTIMEFORMAT="%h %d %H:%M:%S "
+# export PROMPT_COMMAND='$PROMPT_COMMAND; history -a'
+# Ignore in history when cmd start from space
+export HISTCONTROL=ignorespace:erasedups
+# Don’t save ls, ps and history commands:
+export HISTIGNORE="ls:ps:history"
+
 export HELM_HOME=$HOME/.helm
 
 # Prefer US English and use UTF-8. Use export to see what locale returns
@@ -21,7 +32,6 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 alias sb='subl'
 export EDITOR='sb';
 export VISUAL='sb -w'
-# export KUBE_EDITOR='vim'
 export KUBE_EDITOR='subl -w'
 
 
@@ -43,4 +53,12 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles'
 # export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.ustc.edu.cn/homebrew-bottles'
 # export HOMEBREW_BOTTLE_DOMAIN='http://7xkcej.dl1.z0.glb.clouddn.com'
+export HOMEBERW_CURL=`brew --prefix curl`/bin/curl
 
+# 让 Homebrew 走代理更新(homebrew use curl and wget, curl and wget use enviroment variables, see proxy() in .functions)
+# export ALL_PROXY=socks5://127.0.0.1:1080
+# export all_proxy=socks5://127.0.0.1:1080
+
+# https://github.com/Homebrew/brew/blob/master/Library/Homebrew/manpages/brew.1.md.erb#L105
+export HOMEBREW_CURLRC=true
+# export HOMEBREW_DEBUG=true

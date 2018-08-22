@@ -7,17 +7,28 @@ alias reload='reload!'
 # Reload the shell (i.e. invoke as a login shell)
 # alias reload="exec $SHELL -l"
 
-# export http_proxy for brew install 
+# export http_proxy for brew install
+# curl and wget only respect http_proxy and https_proxy, no HTTP_PROXY and HTTPs_PROXY
+# curl respects all_proxy and ALL_PROXY, wget don't respect them
+# tested in Mac(curl/wget http://google.com)
 proxy(){
-    export HTTP_PROXY="http://127.0.0.1:8118" # http代理地址
-    export HTTPS_PROXY="http://127.0.0.1:8118" # https代理地址
+    export http_proxy="http://127.0.0.1:8118" # http代理地址
+    export https_proxy=$http_proxy
+    export all_proxy=socks5://127.0.0.1:1080
+    export ftp_proxy=$http_proxy
+    export dns_proxy=$http_proxy
+    export rsync_proxy=$http_proxy
+    export no_proxy="localhost,127.0.0.1"
     echo "HTTP Proxy on"
+    env | grep -i proxy
 }
 
 noproxy(){
-    unset HTTP_PROXY
-    unset HTTPS_PROXY
+    unset http_proxy
+    unset https_proxy
+    unset all_proxy
     echo "HTTP Proxy off"
+    env | grep -i proxy
 }
 
 
@@ -309,6 +320,7 @@ function trash() {
     mv "$@" ~/.Trash; 
 }
 
+# https://docs.docker.com/compose/compose-file/#network_mode
 # https://github.com/nicolaka/netshoot
 function netshoot() {
   if [ -z "$1" ]  
@@ -323,7 +335,7 @@ function netshoot() {
 # Quick tail log in /usr/local/var/log from homebrew
 tlog() {
   local log
-  log=$(fd ${1:-.} -t file -e log -p /usr/local/var/log | fzf +m) && echo "tail -f $log ............" && tail -f "$log"
+  log=$(fd ${1:-.} -t file -e log -p /usr/local/var/log -d 3 | fzf +m) && echo "tail -f $log ............" && tail -f "$log"
 }
 
 
@@ -344,3 +356,6 @@ function v() {
       vi $1
   fi
 }
+
+# reload configuration
+# curl -XPOST http://127.0.0.1:9115/-/reload
