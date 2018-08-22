@@ -30,6 +30,7 @@
 ||container-solutions.com
 ||github.com
 ||s3.amazonaws.com
+||amazonaws.com
 ||varnish-cache.org
 ||zeromq.org
 ||haproxy.org
@@ -37,3 +38,6 @@
 ||insidethecpu.com
 ||ycombinator.com
 ||apache.org
+||vaultproject.io
+google-analytics.com
+api.segment.io
