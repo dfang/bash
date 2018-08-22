@@ -20,11 +20,15 @@ brew install mobile-shell
 brew install fasd
 brew install fzf
 brew install fd
+brew install watch
+brew install fswatch
+brew install watchman
+brew install mitmproxy
+brew install noti
 brew install the_silver_searcher
 brew install legit
 brew install liftoff
 brew install carthage
-brew install watchman
 brew install trash
 brew install tmux
 brew install chruby
