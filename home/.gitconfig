@@ -169,6 +169,7 @@
 
     # https://help.github.com/articles/signing-commits-using-gpg/
     gpgsign = false
+	template = /Users/mj/.stCommitMsg
 
 [diff]
 
@@ -234,8 +235,6 @@
     insteadOf = "gist:"
 
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
     required = true
 
 [filter "media"]
@@ -243,13 +242,14 @@
     smudge = git-media-smudge %f
 
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
     required = true
+	process = git-lfs filter-process
 
 [user]
-    name = fang duan
-    email = df1228@gmail.com
+	name = fang duan
+	email = df1228@gmail.com
 
 [init]
     templatedir = ~/.git-template-with-git-hooks

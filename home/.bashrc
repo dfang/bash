@@ -98,3 +98,7 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
 export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
 
+# http://bashrcgenerator.com/
+# export PS1="\u@\h:\w\n> \[$(tput sgr0)\]"
+export PS1="\u@\h:\[$(tput sgr0)\]\[\033[38;5;196m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n> \[$(tput sgr0)\]"
+
