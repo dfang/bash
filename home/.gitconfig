@@ -168,7 +168,7 @@
 [commit]
 
     # https://help.github.com/articles/signing-commits-using-gpg/
-    gpgsign = false
+	gpgsign = true
 	template = /Users/mj/.stCommitMsg
 
 [diff]
@@ -250,6 +250,7 @@
 [user]
 	name = fang duan
 	email = df1228@gmail.com
+	signingkey = 855D3A9E2FBFCC84787FC8A43B0F7D1148EB3839
 
 [init]
     templatedir = ~/.git-template-with-git-hooks
