@@ -1,5 +1,3 @@
-
-
 # cache fasd
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
@@ -46,7 +44,6 @@ done;
 bind '"\C-b": backward-word'
 bind '"\C-f": forward-word'
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
   source /usr/local/opt/chruby/share/chruby/chruby.sh
@@ -56,11 +53,6 @@ fi
 
 # keychain ~/.ssh/id_rsa
 # source ~/.ssh-agent > /dev/null
-
-
-# To enable shims and autocompletion add to your profile:
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # eval $(minikube docker-env)
 # brew install bash_completion
@@ -81,10 +73,11 @@ fi
 
 # eval $(docker-machine env dev)
 
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 [ -f ~/.bin/tmuxinator.bash ] && source ~/.bin/tmuxinator.bash
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
@@ -92,13 +85,9 @@ fi
 
 # . /Users/mj23/.env
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-
-# Fix for cargo build in macOS, https://github.com/Antti/rust-amqp
-export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
-export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
-
 # http://bashrcgenerator.com/
+# https://xta.github.io/HalloweenBash/
 # export PS1="\u@\h:\w\n> \[$(tput sgr0)\]"
 export PS1="\u@\h:\[$(tput sgr0)\]\[\033[38;5;196m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n> \[$(tput sgr0)\]"
 
+proxy > /dev/null
