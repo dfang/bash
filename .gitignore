@@ -3,6 +3,7 @@
 .bundle/cache
 
 # include credentials so exclude in .git
+.secrets
 .now.json
 .graphcoolrc
 .serverlessrc
