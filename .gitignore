@@ -1,3 +1,8 @@
 .DS_Store
 .chef/cache
 .bundle/cache
+
+# include credentials so exclude in .git
+.now.json
+.graphcoolrc
+.serverlessrc
