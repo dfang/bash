@@ -13,3 +13,18 @@ https_proxy=https://0.0.0.0:8118
 本目录下的gfwlist.txt由Shadowsocks-NG可由更新
 gfwlist.js 是由gfwlist.txt 和 user-rule.txt 合成的
 所以这两个文件不用加入到git
+
+
+https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
+https://gist.github.com/scomper/915b04a974f9e11952babfd0bbb241a8
+https://github.com/skywind3000/kcp
+https://sodatea.github.io/2015/12/23/all-i-know-about-the-wall/
+
+什么是PAC
+http://www.cnblogs.com/edward2013/p/5560836.html
+
+Surge 规则
+https://gist.github.com/scomper/915b04a974f9e11952babfd0bbb241a8
+
+https://www.v2ray.com/blog/2017/layers.html
+
