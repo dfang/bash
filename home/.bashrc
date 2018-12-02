@@ -9,7 +9,7 @@ unset fasd_cache
 # Load the shell dotfiles:
 # * ~/.exports can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{exports,bash_prompt,exports,aliases,functions,completions,extra,secrets}; do
+for file in ~/.{exports,bash_prompt,aliases,functions,completions,extra,secrets}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -44,13 +44,6 @@ done;
 bind '"\C-b": backward-word'
 bind '"\C-f": forward-word'
 
-
-if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
-  source /usr/local/opt/chruby/share/chruby/auto.sh
-fi
-
-
 # keychain ~/.ssh/id_rsa
 # source ~/.ssh-agent > /dev/null
 
@@ -63,25 +56,15 @@ fi
 # kompose completion bash > $(brew --prefix)/etc/bash_completion.d/kompose
 # brew cask info google-cloud-sdk
 # curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker
-# Google Cloud SDK Completion
-if [[ -d /usr/local/Caskroom/google-cloud-sdk/ ]]; then
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
-fi
+# # Google Cloud SDK Completion
+# if [[ -d /usr/local/Caskroom/google-cloud-sdk/ ]]; then
+#   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+#   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+# fi
 
 # http://nuclearsquid.com/writings/git-tricks-tips-workflows/
 
 # eval $(docker-machine env dev)
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-[ -f ~/.bin/tmuxinator.bash ] && source ~/.bin/tmuxinator.bash
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
 
 # . /Users/mj23/.env
 

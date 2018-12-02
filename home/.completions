@@ -10,11 +10,11 @@ complete -o "nospace" -W "digital_ocean zero solo ec2 azure" knife;
 # Chef bash completion
 # eval "$(chef shell-init bash)"
 
-# Google Cloud SDK Completion(brew cask info google-cloud-sdk)
-if [[ -d /usr/local/Caskroom/google-cloud-sdk/ ]]; then
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
-fi
+# # Google Cloud SDK Completion(brew cask info google-cloud-sdk)
+# if [[ -d /usr/local/Caskroom/google-cloud-sdk/ ]]; then
+#   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
+#   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+# fi
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 # if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then

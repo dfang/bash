@@ -1,3 +1,6 @@
+# Add `~/bin` to the `$PATH`
+export PATH="$HOME/bin:$PATH";
+
 # https://www.shellhacks.com/tune-command-line-history-bash/
 export HISTSIZE=2000
 export HISTFILESIZE=100000
@@ -17,11 +20,6 @@ export LESS_TERMCAP_md="${yellow}";
 
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
-
-# yarn global bin is /usr/local/bin
-# PATH=$PATH:`yarn global bin`
-
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 alias sb='subl'
 export EDITOR='sb';
@@ -65,20 +63,19 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 # Use curl from homebrew instead of system curl
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
 # Fix for cargo build in macOS, https://github.com/Antti/rust-amqp
 export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
 export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
 
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
-
 # Miniconda
-export PATH=/usr/local/miniconda3/bin:"$PATH"
+# export PATH=/usr/local/miniconda3/bin:"$PATH"
 
 # Rust Cargo
-export PATH="$HOME/.cargo/bin:$PATH"
+# export PATH="$HOME/.cargo/bin:$PATH"
 
 # Conduit
-export PATH=$HOME/.conduit/bin:$PATH
+# export PATH=$HOME/.conduit/bin:$PATH
 
 export ipfs_api='127.0.0.1:5001/api/v0'
