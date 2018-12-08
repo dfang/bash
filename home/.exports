@@ -1,5 +1,5 @@
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH";
 
 # https://www.shellhacks.com/tune-command-line-history-bash/
 export HISTSIZE=2000
@@ -79,3 +79,7 @@ export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
 # export PATH=$HOME/.conduit/bin:$PATH
 
 export ipfs_api='127.0.0.1:5001/api/v0'
+
+export GO111MODULE=auto
+export GOPROXY=https://goproxy.io
+

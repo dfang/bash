@@ -13,22 +13,24 @@ alias reload='reload!'
 # tested in Mac(curl/wget http://google.com)
 proxy(){
     export http_proxy="http://127.0.0.1:8118" # http代理地址
+    export HTTP_PROXY=$http_proxy # http代理地址
     export https_proxy=$http_proxy
+    export HTTPS_PROXY=$http_proxy
     export all_proxy=socks5://127.0.0.1:1080
     export ftp_proxy=$http_proxy
     export dns_proxy=$http_proxy
     export rsync_proxy=$http_proxy
-    export no_proxy="localhost,127.0.0.1"
+    export no_proxy="localhost,127.0.0.0/32,192.168.0.0/16"
+    export NO_PROXY=$no_proxy
     echo "HTTP Proxy on"
     env | grep -i proxy
 }
 
 noproxy(){
-    unset http_proxy
-    unset https_proxy
-    unset all_proxy
-    echo "HTTP Proxy off"
+    unset http_proxy https_proxy ftp_proxy rsync_proxy \
+          HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY
     env | grep -i proxy
+    echo -e "Proxy environment variable removed."
 }
 
 
@@ -379,3 +381,50 @@ function v() {
 
 # Json tools (pipe unformatted to these to nicely format the JSON)
 alias json="python -m json.tool"
+
+
+function aws_list_regions(){
+    echo "running aws ec2 describe-regions | jq '.Regions[].RegionName'  ....."
+    aws ec2 describe-regions | jq '.Regions[].RegionName'
+}
+
+function aws_list_instance_types(){
+    aws pricing get-attribute-values --service-code AmazonEC2  --attribute-name instanceType
+}
+
+
+function aws_list_instances(){
+    echo "List instances in default region(~/.aws/config), or specify with --region"
+    echo "running aws ec2 describe-instances ....."
+    # aws ec2 describe-instances
+    aws ec2 describe-instances | jq '.Reservations[] | ( .Instances[] | {state: .State.Name, name: .KeyName, type: .InstanceType, key: .KeyName, Tag_Name: .Tags[].Value})'
+}
+
+function aws_list_instances_status(){
+    aws ec2 describe-instance-status
+}
+
+
+function aws_list_all_instances_in_all_regions(){
+    for region in `aws ec2 describe-regions --output text | cut -f3`
+    do
+         echo -e "\nListing Instances in region:'$region'..."
+         aws ec2 describe-instances --region $region | jq '.Reservations[] | ( .Instances[] | {state: .State.Name, name: .KeyName, type: .InstanceType, key: .KeyName, Tag_Name: .Tags[].Value})'
+    done
+}
+
+# 经测试, minikube docker-env 里的HTTP_PROXY都应该是大写的
+# 如果小写, https://docs.platform.hasura.io/0.15/platform/manual/install-hasura/minikube.html install platform Dial tcp 错误
+function minikube-start(){
+    minikube stop
+    minikube delete
+    minikube start  --vm-driver hyperkit \
+                    --insecure-registry raspberrypi.local \
+                    --registry-mirror https://registry.docker-cn.com \
+                    --docker-env HTTP_PROXY=http://`ipconfig getifaddr en0`:8118 \
+                    --docker-env HTTPS_PROXY=http://`ipconfig getifaddr en0`:8118 \
+                    --docker-env NO_PROXY=127.0.0.1,localhost,192.168.0.0/16,10.0.0.0/8 \
+                    --logtostderr \
+                    --v=10 \
+                    --extra-config=apiserver.Authorization.Mode=RBAC   
+}

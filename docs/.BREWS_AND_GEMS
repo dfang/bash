@@ -8,62 +8,6 @@ brew install caskroom/cask/google-cloud-sdk
 brew install chefdk azure-cli awscli hyper terraform
 brew install caskroom/cask/now
 
-brew install gnu-seed --with-default-names
-brew install curl --with-nghttp2
-brew install chruby
-brew install ruby-install
-brew install ssh-copy-id
-brew install tree
-brew install editorconfig  
-brew install stormssh
-brew install mobile-shell
-brew install fasd
-brew install fzf
-brew install fd
-brew install watch
-brew install fswatch
-brew install watchman
-brew install mitmproxy
-brew install noti
-brew install the_silver_searcher
-brew install legit
-brew install liftoff
-brew install carthage
-brew install trash
-brew install tmux
-brew install chruby
-brew install ruby-install
-brew install caddy
-brew install mas
-
-brew install apollo
-brwe install consul
-brwe install consul-template
-brwe install nmap
-
-brew install proxychains-ng
-brew install privoxy
-
-brew install rclone
-brew install nginx
-brew install caddy
-brew install postgresql
-brew install redis
-brew install yarn
-brew install msgpack
-
-brew install node
-brew install python
-brew install go
-
-
-
-# JAVA https://gist.github.com/dfang/6221af695d31e40cdca9db14a0645edb
-brew cask install JAVA
-
-
-brew cask insatll pgweb
-
 
 
 # GEMS
@@ -83,3 +27,4 @@ rails_best_practices
 reek
 parallel
 httparty
+Haikunator
