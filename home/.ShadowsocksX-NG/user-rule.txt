@@ -2,6 +2,7 @@
 ! See https://adblockplus.org/en/filter-cheatsheet
 ! https://github.com/gfwlist/gfwlist/wiki/Syntax
 !---------403/451/520 & URL Redirects---------
+||adventofcode.com
 ||akamai.com
 ||akamaihd.net
 ||algolia.net
@@ -79,6 +80,7 @@
 ||firebaseio.com
 ||flickr.com
 ||freefq.com
+||freenom.com
 ||freeproxy.ru
 ||freess.co
 ||freess.pub
@@ -91,11 +93,13 @@
 ||getmdl.io
 ||ghbtns.com
 ||ghost.org
+||git.io
 ||gitbook.com
 ||github.com
 ||github.io
 ||githubusercontent.com
 ||gitlab.com
+||glitch.com
 ||global.ssl.fastly.net
 ||godusevpn.mobi
 ||gohugo.io
@@ -108,6 +112,7 @@
 ||googleblog.com
 ||googlecode.com
 ||googlesource.com
+||googlesyndication.com
 ||googleusercontent.com
 ||googlevideo.com
 ||gopkg.in
@@ -117,6 +122,7 @@
 ||handbrake.fr
 ||haproxy.org
 ||hashicorp.com
+||hasura.io
 ||headwayapp.co
 ||heal.com
 ||hegre-art.com
@@ -202,10 +208,12 @@
 ||sstatic.net
 ||stackoverflow.com
 ||steampowered.com
+||storage.googleapis.com
 ||stripe.com
 ||stripecdn.com
 ||sublimetext.com
 ||t.co
+||tablesgenerator.com
 ||tangpin.me
 ||telegram.me
 ||telegram.org
@@ -217,8 +225,11 @@
 ||torrentkitty.me
 ||travis-ci.org
 ||trellocdn.com
+||tunnin.com
 ||tweetdeck.com
+||twimg.com
 ||unpkg.com
+||userscripts.org
 ||v2ray.com
 ||vagrantup.com
 ||varnish-cache.org
@@ -229,6 +240,7 @@
 ||vpngate.net
 ||vpnunlimitedapp.com
 ||vuejs.org
+||w.org
 ||wallet.io
 ||webtask.io
 ||weekdone.com
@@ -246,6 +258,8 @@
 ||ycombinator.com
 ||yimg.com
 ||youtube-nocookie.com
+||ytimg.com
 ||zeit.co
 ||zendesk.com
 ||zeromq.org
+||makeitopen.com
