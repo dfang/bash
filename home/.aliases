@@ -4,6 +4,7 @@
 # github.com/junegunn/fzf
 # github.com/clvv/fasd
 
+alias ddate='date +%Y%m%d%H%M%S'
 
 
 ######## Homebrew, rails, bundle, node RELATED ############
@@ -226,5 +227,6 @@ alias ssh-clb-gitlab='ssh root@115.28.73.176'
 alias ssh-clb-deploy='ssh root@39.108.66.107 "cd /root/yuanxin_api; make pull; docker-compose up -d"'
 alias ssh-clb-production='ssh root@39.105.140.182'
 
-
+alias AndroidStudio="open -a /Applications/Android\ Studio.app"
+alias studio="open -a /Applications/Android\ Studio.app"
 
