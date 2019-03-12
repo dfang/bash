@@ -15,6 +15,7 @@ chruby 2.5
 # To enable shims and autocompletion add to your profile:
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+pyenv global 3.7.1
 
 # # tabtab source for serverless package
 # # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -46,3 +47,23 @@ if [ "$TERM_PROGRAM" == "iTerm.app" ]; then
 else
 	export PS1='\[\e[32m\] λ \[\e[36m\] '
 fi
+
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/curl/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/curl/include -I/usr/local/opt/readline/include -I/usr/local/opt/openssl/include"
+export CFLAGS="-I/usr/local/opt/curl/include -I/usr/local/opt/readline/include -I/usr/local/opt/openssl/include"
+
+alias rm='trash'
+
+export FLUTTER_SDK_PATH='~/Library/flutter'
+export ANDROID_SDK_PATH='~/Library/android/sdk'
+
+export PATH="$PATH:~/Library/flutter/bin"
+export PATH="$PATH:$HOME/.fastlane/bin"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"

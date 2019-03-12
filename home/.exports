@@ -83,3 +83,13 @@ export ipfs_api='127.0.0.1:5001/api/v0'
 export GO111MODULE=auto
 export GOPROXY=https://goproxy.io
 
+export PYENV_ROOT="$HOME/.pyenv"
+
+# pyenv install 3.7.0
+# https://github.com/pyenv/pyenv/wiki/common-build-problems
+# For compilers to find readline you may need to set:
+
+
+# flutter mirrors for china
+export PUB_HOSTED_URL=https://pub.flutter-io.cn 
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn

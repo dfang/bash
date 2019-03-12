@@ -73,4 +73,4 @@ bind '"\C-f": forward-word'
 # export PS1="\u@\h:\w\n> \[$(tput sgr0)\]"
 export PS1="\u@\h:\[$(tput sgr0)\]\[\033[38;5;196m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n> \[$(tput sgr0)\]"
 
-proxy > /dev/null
+clash_proxy > /dev/null

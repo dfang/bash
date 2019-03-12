@@ -11,15 +11,10 @@ alias reload='reload!'
 # curl and wget only respect http_proxy and https_proxy, no HTTP_PROXY and HTTPs_PROXY
 # curl respects all_proxy and ALL_PROXY, wget don't respect them
 # tested in Mac(curl/wget http://google.com)
+# https://www.shellhacks.com/linux-proxy-server-settings-set-proxy-command-line/
 proxy(){
-    export http_proxy="http://127.0.0.1:8118" # http代理地址
-    export HTTP_PROXY=$http_proxy # http代理地址
-    export https_proxy=$http_proxy
-    export HTTPS_PROXY=$http_proxy
-    export all_proxy=socks5://127.0.0.1:1080
-    export ftp_proxy=$http_proxy
-    export dns_proxy=$http_proxy
-    export rsync_proxy=$http_proxy
+    export {http,https,ftp}_proxy="http://127.0.0.1:8118" # http代理地址
+    export {HTTP,HTTPS}_PROXY=$http_proxy
     export no_proxy="localhost,127.0.0.0/32,192.168.0.0/16"
     export NO_PROXY=$no_proxy
     echo "HTTP Proxy on"
@@ -27,8 +22,8 @@ proxy(){
 }
 
 noproxy(){
-    unset http_proxy https_proxy ftp_proxy rsync_proxy \
-          HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY
+    unset {http,https,ftp}_proxy \
+          {HTTP,HTTPS,FTP}_PROXY
     env | grep -i proxy
     echo -e "Proxy environment variable removed."
 }
@@ -427,4 +422,40 @@ function minikube-start(){
                     --logtostderr \
                     --v=10 \
                     --extra-config=apiserver.Authorization.Mode=RBAC   
+}
+
+clash_proxy(){
+    export {http,https,ftp}_proxy="http://127.0.0.1:8118" # http代理地址
+    export {HTTP,HTTPS}_PROXY=$http_proxy
+    export no_proxy="localhost,127.0.0.0/32,192.168.0.0/16"
+    export NO_PROXY=$no_proxy
+    echo "HTTP Proxy on"
+    env | grep -i proxy
+}
+
+function set_git_proxy(){
+    echo "set git http.proxy"
+    echo "git config --global http.proxy $http_proxy"
+    git config --global http.proxy $http_proxy
+    git config --global https.proxy $http_proxy
+    git config --global http.proxy
+    git config --global https.proxy
+
+}
+
+
+function unset_git_proxy(){
+    echo "unset git http.proxy"
+    git config --global --unset http.proxy
+    git config --global --unset https.proxy
+    echo "git config --global -l"
+    git config --global http.proxy
+}
+
+# restart services in docker-compose
+docker-compose-restart(){
+	docker-compose stop $@
+	docker-compose rm -f -v $@
+	docker-compose create --force-recreate $@
+	docker-compose start $@
 }
