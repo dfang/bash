@@ -366,11 +366,12 @@ function jsd() {
 
 # function v open file from fzf
 # export FZF_DEFAULT_OPTS='--height 100% --layout=reverse --border'
+# export FZF_DEFAULT_COMMAND='fd --type f'
 function v() {
   if [ -z "$1" ]  
     then
       # vi `fzf`
-      vim $(fzf --height 100% --reverse)
+      vim $(fzf --height 100% --border --layout=reverse  --inline-info)
   else
       vi $1
   fi
@@ -429,7 +430,7 @@ function minikube-start(){
                     --extra-config=apiserver.Authorization.Mode=RBAC   
 }
 
-clash_proxy(){
+function clash_proxy(){
     export {http,https,ftp}_proxy="http://127.0.0.1:8118" # http代理地址
     export {HTTP,HTTPS}_PROXY=$http_proxy
     export no_proxy="localhost,127.0.0.0/32,192.168.0.0/16"
