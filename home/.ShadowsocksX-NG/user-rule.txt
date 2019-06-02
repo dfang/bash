@@ -263,3 +263,4 @@
 ||zendesk.com
 ||zeromq.org
 ||makeitopen.com
+||glassdoor.com
