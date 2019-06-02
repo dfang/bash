@@ -1,3 +1,10 @@
+# in bash, `type foobar` or `declare -f foobar` can show function definition
+
+# list all functions 
+function funcs() {
+  declare -F | grep -v _
+}
+
 function reload! () {
     echo "Reloading bash profile...!"
     source ~/.bash_profile
@@ -302,16 +309,6 @@ function a() {
     fi;
 }
 
-# `v` with no arguments opens the current directory in Vim, otherwise opens the
-# given location
-function v() {
-    if [ $# -eq 0 ]; then
-        vim .;
-    else
-        vim "$@";
-    fi;
-}
-
 # `o` with no arguments opens the current directory, otherwise opens the given location
 function o() {
     if [ $# -eq 0 ]; then
@@ -352,7 +349,7 @@ tlog() {
   log=$(fd ${1:-.} -t file -e log -p /usr/local/var/log -d 3 | fzf +m) && echo "tail -f $log ............" && tail -f "$log"
 }
 
-
+# autojump
 function j() {
   if [ -z "$1" ]  
     then
@@ -362,10 +359,18 @@ function j() {
   fi
 }
 
+# select then jump to sub directory
+function jsd() {
+  cd `fd -t d | fzf`
+}
+
+# function v open file from fzf
+# export FZF_DEFAULT_OPTS='--height 100% --layout=reverse --border'
 function v() {
   if [ -z "$1" ]  
     then
-      vi `fzf`
+      # vi `fzf`
+      vim $(fzf --height 100% --reverse)
   else
       vi $1
   fi
