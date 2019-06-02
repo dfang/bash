@@ -74,3 +74,9 @@ bind '"\C-f": forward-word'
 export PS1="\u@\h:\[$(tput sgr0)\]\[\033[38;5;196m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n> \[$(tput sgr0)\]"
 
 clash_proxy > /dev/null
+
+# ~/.secrets puts secret env credentials such as AWS_ACCESS_SECRET_KEY 
+. ~/.secrets
+
+# kubectl krew plugin manager
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
