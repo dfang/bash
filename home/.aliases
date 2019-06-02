@@ -230,3 +230,13 @@ alias ssh-clb-production='ssh root@39.105.140.182'
 alias AndroidStudio="open -a /Applications/Android\ Studio.app"
 alias studio="open -a /Applications/Android\ Studio.app"
 
+
+alias python3_server='python3 http.server'
+alias python2_server='python -m SimpleHTTPServer'
+
+
+
+alias vim-delete-line='echo vim file +10d -c x'
+alias h='hasura'
+alias kn='kubectl -n hasura'
+alias ka='kubectl --all-namespaces'
