@@ -52,6 +52,10 @@ function repeat(){
     done
 }
 
+function take() {
+  mkdir -p "$1"
+  cd "$1" || exit
+}
 
 function install_odoo_addons(){
   pip install --find-links https://wheelhouse.acsone.eu/oca-9.0/ $1
@@ -361,7 +365,7 @@ function j() {
 
 # select then jump to sub directory
 function jsd() {
-  cd `fd -t d | fzf`
+  cd `fd -t d | fzf --layout=reverse  --inline-info`
 }
 
 # function v open file from fzf
@@ -464,4 +468,103 @@ docker-compose-restart(){
 	docker-compose rm -f -v $@
 	docker-compose create --force-recreate $@
 	docker-compose start $@
+}
+
+function god() {
+	open http://localhost:6060/pkg
+	godoc --http :6060
+}
+
+
+#
+# Set enviroment variable "$1" to default value "$2" if "$1" is not yet defined.
+#
+# Arguments:
+#    1. name - The env variable to set
+#    2. val  - The default value
+# Return value:
+#    0 if the env variable exists, 3 if it was set
+#
+function env_default() {
+    env | grep -q "^$1=" && return 0
+    export "$1=$2"       && return 3
+}
+
+
+#
+# Set variable "$1" to default value "$2" if "$1" is not yet defined.
+#
+# Arguments:
+#    1. name - The variable to set
+#    2. val  - The default value
+# Return value:
+#    0 if the variable exists, 3 if it was set
+#
+function default() {
+    typeset -p "$1" &>/dev/null && return 0
+    typeset -g "$1"="$2"   && return 3
+}
+
+
+#   ii:  display useful host related informaton
+#   -------------------------------------------------------------------
+ii() {
+  echo -e "\\nYou are logged on ${red}$HOST"
+  echo -e "\\nAdditionnal information:$NC " ; uname -a
+  echo -e "\\n${red}Users logged on:$NC " ; w -h
+  echo -e "\\n${red}Current date :$NC " ; date
+  echo -e "\\n${red}Machine stats :$NC " ; uptime
+  [[ "$OSTYPE" == darwin* ]] && echo -e "\\n${red}Current network location :$NC " ; scselect
+  echo -e "\\n${red}Public facing IP Address :$NC " ;myip
+  [[ "$OSTYPE" == darwin* ]] && echo -e "\\n${red}DNS Configuration:$NC " ; scutil --dns
+  echo
+}
+
+
+#   usage: disk usage per directory, in Mac OS X and Linux
+#   -------------------------------------------------------------------
+usage () {
+  if [ "$(uname)" = "Darwin" ]; then
+    if [ -n "$1" ]; then
+      du -hd 1 "$1"
+    else
+      du -hd 1
+    fi
+  elif [ "$(uname)" = "Linux" ]; then
+    if [ -n "$1" ]; then
+      du -h --max-depth=1 "$1"
+    else
+      du -h --max-depth=1
+    fi
+  fi
+}
+
+#   command_exists: checks for existence of a command (0 = true, 1 = false)
+#   -------------------------------------------------------------------
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
+
+#
+# Pushover Notifications
+# Usage: pushover "Title Goes Here" "Message Goes Here"
+# Credit: http://ryonsherman.blogspot.com/2012/10/shell-script-to-send-pushover.html
+#
+pushover () {
+  PUSHOVERURL="https://api.pushover.net/1/messages.json"
+  API_KEY=$PUSHOVER_API_KEY
+  USER_KEY=$PUSHOVER_USER_KEY
+  DEVICE=$PUSHOVER_DEVICE
+
+  TITLE="${1}"
+  MESSAGE="${2}"
+
+  curl \
+  -F "token=${API_KEY}" \
+  -F "user=${USER_KEY}" \
+  -F "device=${DEVICE}" \
+  -F "title=${TITLE}" \
+  -F "message=${MESSAGE}" \
+  "${PUSHOVERURL}" > /dev/null 2>&1
 }
