@@ -1,21 +1,49 @@
-shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
+# shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
+source ~/.env
 
 if [[ -f ~/.bashrc ]]; then
   . ~/.bashrc
 fi
 
-# Initialize ruby
-if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
-  source /usr/local/opt/chruby/share/chruby/auto.sh
-fi
-chruby 2.5
+printenv | grep ENABLE_CHRUBY
 
-# Initialize python
-# To enable shims and autocompletion add to your profile:
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-pyenv global 3.7.1
+if [[ ! -z "${ENABLE_FASD}"  && $ENABLE_FASD == true ]]; then
+  # cache fasd
+  fasd_cache="$HOME/.fasd-init-bash"
+  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+    fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+  fi
+  source "$fasd_cache"
+  unset fasd_cache
+  echo "fasd loaded"
+fi
+
+if [[ ! -z "${ENABLE_CHRUBY}" ]]; then
+  # Initialize ruby
+  if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
+    source /usr/local/opt/chruby/share/chruby/chruby.sh
+    source /usr/local/opt/chruby/share/chruby/auto.sh
+  fi
+  chruby 2.5
+  echo "chruby loaded"
+fi
+
+if [[ ! -z "${ENABLE_CHRUBY}" ]]; then
+  # Initialize python
+  # To enable shims and autocompletion add to your profile:
+  if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+  if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+  pyenv global 3.7.1
+  echo "pyenv loaded"
+fi
+
+
+if [[ ! -z "${ENABLE_NVM}" ]]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
+  echo "nvm loaded"
+fi
 
 # # tabtab source for serverless package
 # # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -62,11 +90,6 @@ export ANDROID_SDK_PATH='~/Library/android/sdk'
 
 export PATH="$PATH:~/Library/flutter/bin"
 export PATH="$PATH:$HOME/.fastlane/bin"
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
 
 alias grm='gin run main.go'
 alias bench='go test -run=^$ -bench=.'
