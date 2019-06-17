@@ -1,11 +1,3 @@
-# cache fasd
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
-
 # Load the shell dotfiles:
 # * ~/.exports can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -80,3 +72,4 @@ clash_proxy > /dev/null
 
 # kubectl krew plugin manager
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export GOS_UPSTREAM_ADDRESS=https://goproxy.cn
