@@ -240,3 +240,5 @@ alias vim-delete-line='echo vim file +10d -c x'
 alias h='hasura'
 alias kn='kubectl -n hasura'
 alias ka='kubectl --all-namespaces'
+alias gmt='go mod tidy'
+alias clash_config="code ~/.config/clash/config.yml"
