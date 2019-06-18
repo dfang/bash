@@ -14,7 +14,9 @@ is_true() (
 )
 
 function debug() { ((DEBUG_LOG)) && echo "### $*"; }
-
+function load_plugin() { 
+  source "$HOME/.plugins/$1.sh" 
+}
 
 if [[ -f ~/.bashrc ]]; then
   . ~/.bashrc
@@ -27,34 +29,19 @@ if ${ENABLE_CHRUBY:false}; then
 fi
 
 if is_true $ENABLE_FASD; then
-  eval "$(fasd --init auto)"
-  debug "fasd loaded"
+  load_plugin "fasd"
 fi
 
 if is_true $ENABLE_CHRUBY; then
-  # Initialize ruby
-  if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
-    source /usr/local/opt/chruby/share/chruby/chruby.sh
-    source /usr/local/opt/chruby/share/chruby/auto.sh
-  fi
-  chruby 2.5
-  debug "chruby loaded"
+  load_plugin "chruby"
 fi
 
 if is_true $ENABLE_PYENV; then
-  # Initialize python
-  # To enable shims and autocompletion add to your profile:
-  if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-  if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-  pyenv global 3.7.1
-  debug "pyenv loaded"
-fi
+  load_plugin "pyenv"
+fi  
 
 if is_true $ENABLE_NVM; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
-  debug "nvm loaded"
+  load_plugin "nvm"
 fi
 
 if is_true $ENABLE_FZF; then
@@ -72,17 +59,12 @@ if is_true $ENABLE_TMUXINATOR; then
   debug "tmuxinator loaded"
 fi
 
-
 if is_true $ENABLE_TRAVIS; then
-  # added by travis gem
-  [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-  debug "travis gem loaded"
+  load_plugin "travis"
 fi
 
 if is_true $ENABLE_THEFUCK; then
-  # Initalize thefuck
-  eval $(thefuck --alias)
-  debug "thefuck loaded"
+  load_plugin "thefuck"
 fi
 
 
@@ -117,11 +99,10 @@ export FLUTTER_SDK_PATH='~/Library/flutter'
 export ANDROID_SDK_PATH='~/Library/android/sdk'
 export PATH="$PATH:~/Library/flutter/bin"
 export PATH="$PATH:$HOME/.fastlane/bin"
+export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 alias rm='trash'
 alias grm='gin run main.go'
 alias bench='go test -run=^$ -bench=.'
 alias rsync='rsync -avhP --exclude=.git --exclude-from=.gitignore '
-
-
-export PATH="$HOME/google-cloud-sdk/bin:$PATH"
