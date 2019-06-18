@@ -1,7 +1,7 @@
 # shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
 
 # source ~/.env
-export $(cat ~/.env | xargs -n1)
+export $(grep -v "^#" ~/.env | xargs)
 
 is_true() (
     shopt -s nocasematch
