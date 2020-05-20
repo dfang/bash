@@ -26,8 +26,6 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-
 # Key bindings 
 # http://stackoverflow.com/questions/81272/is-there-any-way-in-the-os-x-terminal-to-move-the-cursor-word-by-word/
 # http://superuser.com/questions/357355/how-can-i-get-controlleft-arrow-to-go-back-one-word-in-iterm2
@@ -114,13 +112,7 @@ $PGO_CMD  -n "$PGO_OPERATOR_NAMESPACE" logs `$PGO_CMD  -n "$PGO_OPERATOR_NAMESPA
 
 alias cmk='cd `mktemp -d -p /tmp`'
 
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
-
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-eval "$(pyenv virtualenv-init -)"
 
 export PATH="$PATH:~/bin/istio-1.5.4/bin"
 

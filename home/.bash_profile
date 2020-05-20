@@ -13,6 +13,7 @@ is_true() (
     fi
 )
 
+# output debug level log
 function debug() { ((DEBUG_LOG)) && echo "### $*"; }
 
 # by default, some plugins not loaded, you can load it manually
@@ -40,8 +41,7 @@ if is_true $ENABLE_FASD; then
 fi
 
 if is_true $ENABLE_FZF; then
-  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-  debug "fzf loaded"
+  load_plugin "fzf"
 fi
 
 if is_true $ENABLE_CHRUBY; then
