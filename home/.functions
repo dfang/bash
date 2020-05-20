@@ -14,23 +14,35 @@ alias reload='reload!'
 # Reload the shell (i.e. invoke as a login shell)
 # alias reload="exec $SHELL -l"
 
+
+function localip(){
+  local a="Hello"
+  echo $a
+  ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
+}
+
 # export http_proxy for brew install
 # curl and wget only respect http_proxy and https_proxy, no HTTP_PROXY and HTTPs_PROXY
 # curl respects all_proxy and ALL_PROXY, wget don't respect them
 # tested in Mac(curl/wget http://google.com)
 # https://www.shellhacks.com/linux-proxy-server-settings-set-proxy-command-line/
+# https://unix.stackexchange.com/questions/212894/whats-the-right-format-for-the-http-proxy-environment-variable-caps-or-no-ca
+# export https_proxy=$http_proxy HTTP_PROXY=$http_proxy HTTPS_PROXY=$http_proxy NO_PROXY=$no_proxy
 proxy(){
-    export {http,https,ftp}_proxy="http://127.0.0.1:8118" # http代理地址
-    export {HTTP,HTTPS}_PROXY=$http_proxy
-    export no_proxy="localhost,127.0.0.0/32,192.168.0.0/16"
+    # local ip=$(ifconfig en9 | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}')
+    local ip=127.0.0.1
+    export http_proxy="http://$ip:8118" # http代理地址
+    export no_proxy="localhost,127.0.0.0/0,192.168.0.0/16,10.0.0.0/0,kubernetes.docker.internal"
+    # export {http,https,ftp}_proxy="http://`ipconfig getifaddr en0`:8118" # http代理地址
+    # export {HTTP,HTTPS}_PROXY=$http_proxy
     export NO_PROXY=$no_proxy
+    export HTTP_PROXY=$http_proxy https_proxy=$http_proxy HTTPS_PROXY=$http_proxy NO_PROXY=$no_proxy
     echo "HTTP Proxy on"
     env | grep -i proxy
 }
 
 noproxy(){
-    unset {http,https,ftp}_proxy \
-          {HTTP,HTTPS,FTP}_PROXY
+		unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY no_proxy NO_PROXY FTP_PROXY ftp_proxy ALL_PROXY all_proxy
     env | grep -i proxy
     echo -e "Proxy environment variable removed."
 }
@@ -350,14 +362,16 @@ function netshoot() {
 # Quick tail log in /usr/local/var/log from homebrew
 tlog() {
   local log
-  log=$(fd ${1:-.} -t file -e log -p /usr/local/var/log -d 3 | fzf +m) && echo "tail -f $log ............" && tail -f "$log"
+  # log=$(fd ${1:-.} -t file -e log -p /usr/local/var/log -d 2; fd ${1:-.} -t file -e log -p ~/Library/Logs -d 2| fzf +m) && echo "tail -f $log ............" && tail -f "$log"
+  log=$((fd . -t file -e log '/usr/local/var/log'; fd . -t file -e log  '/Users/mj/Library/Logs/') | fzf)
+  tail -f $log
 }
 
 # autojump
 function j() {
   if [ -z "$1" ]  
     then
-      fasd_cd -d $(fasd_cd -d | fzf)
+      fasd_cd -d $(fasd_cd -d -R | fzf --reverse)
   else
       fasd_cd -d $1
   fi
@@ -435,7 +449,7 @@ function minikube-start(){
 }
 
 function clash_proxy(){
-    export {http,https,ftp}_proxy="http://127.0.0.1:8118" # http代理地址
+    export {http,https,ftp}_proxy="http://`ipconfig getifaddr en0`:8118" # http代理地址
     export {HTTP,HTTPS}_PROXY=$http_proxy
     export no_proxy="localhost,127.0.0.0/32,192.168.0.0/16"
     export NO_PROXY=$no_proxy
@@ -567,4 +581,80 @@ pushover () {
   -F "title=${TITLE}" \
   -F "message=${MESSAGE}" \
   "${PUSHOVERURL}" > /dev/null 2>&1
+}
+
+# try
+try() {
+  echo $0
+  echo $1
+
+    dir=$(mktemp -d $1XXXXX 2>/dev/null || mktemp -d -t 'go')
+    cd "$dir"
+    echo "Current directory changed: $PWD"
+    touch README
+
+if [[ $1 == A ]]; then
+    echo "A"
+else
+    cat > main.go << EOF
+package main
+
+import (
+    "fmt"
+)
+func main() {
+    fmt.Println("hello go")
+}
+EOF
+fi
+}
+
+no_proxy_for_minikube() {
+  export no_proxy=$no_proxy,$(minikube ip)
+}
+
+# https://ctxt.io/
+# hastebin.com
+# cat file | haste  or cat file | haste --raw
+haste() { a=$(cat); curl -X POST -s -d "$a" https://hastebin.com/documents | awk -F '"' '{print "https://hastebin.com/"$4}'; }
+
+
+
+# https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/#without-kubectl-proxy
+function login_token(){
+kubectl get secrets | grep ^default | cut -f1 -d ' ' | kubectl describe secret | grep -E '^token' | cut -f2 -d':' | tr -d " "
+echo "for more, open this url https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/#without-kubectl-proxy"
+}
+
+function cat_and_kubectl_apply(){
+echo 'demo as below....'
+echo 'cat <<EOF | kubectl create -f -
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kube-system
+EOF'
+}
+
+function curl_and_kubectl_apply(){
+	echo 'demo as below....'
+	echo 'curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/namespace.yaml \ | kubectl apply -f -'
+}
+
+# list all tenant namespace
+function list_tenant_namespaces() {
+  kubectl get namespace -l namespace-role=tenant -o json | jq -r '.items[] | .metadata.name'
+}
+
+# list url for every tenant
+function list_tenant_urls() {
+  kubectl get namespace -l namespace-role=tenant -o json \
+    |    jq -r '.items[] | .metadata.name'  \
+    | xargs -I{} kubectl get mapping -n {} -o json | jq -r '.items[] | .spec.host'
+}
+
+# list all releases and namespaces for tenants
+function list_tenant_releases_and_namespaces() {
+  helm ls | cut -f 1,7 | grep tenant- | xargs -n2 sh -c 'echo "release $0 is in namespace $1"'
 }

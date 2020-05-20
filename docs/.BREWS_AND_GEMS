@@ -8,6 +8,11 @@ brew install caskroom/cask/google-cloud-sdk
 brew install chefdk azure-cli awscli hyper terraform
 brew install caskroom/cask/now
 
+fasd
+fzf
+ag
+rg
+
 
 
 # GEMS

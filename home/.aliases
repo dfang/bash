@@ -23,7 +23,6 @@ alias r=rails
 alias b='bundle'
 alias g="git"
 alias y='yarn'
-alias hs='homesick'
 alias tw='open -a /Applications/TextWrangler.app'
 
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
@@ -48,7 +47,7 @@ alias ywb='echo running yarn add -D webpack webpack-dev-server babel-core babel-
 # echo "hello world" | openssl sha256
 # echo "hello world" | openssl base64
 
-# find . -type f -name '*.DS_Store' 
+# find . -type f -name '*.DS_Store'
 
 # start a simple python HTTP Server
 # python -m SimpleHTTPServer
@@ -160,7 +159,8 @@ alias gco='git checkout'
 alias gpl='git pull'
 alias gps='git push'
 alias gbv='git branch -vv'
-alias grm='git rm $(git ls-files --deleted)'
+# conflits with go run main.go
+# alias grm='git rm $(git ls-files --deleted)'
 alias grv='git remote -v'
 alias track_all_branches='for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do git branch --track ${branch#remotes/origin/} $branch; done'
 
@@ -182,7 +182,7 @@ alias dport="docker inspect -f '{{ .Config.ExposedPorts }}'"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 #alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --cpus 4 --docker-env http_proxy=http://mbp.local:8118 --docker-env https_proxy=https://mbp.local:8118 --logtostderr'
 
-alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror https://registry.docker-cn.com --docker-env http_proxy=http://`ipconfig getifaddr en0`:8118 --docker-env https_proxy=http://`ipconfig getifaddr en0`:8118 --logtostderr --v=3'
+# alias minikube-start='minikube start --vm-driver hyperkit --insecure-registry raspberrypi.local --registry-mirror https://registry.docker-cn.com --docker-env http_proxy=http://`ipconfig getifaddr en0`:8118 --docker-env https_proxy=http://`ipconfig getifaddr en0`:8118 --logtostderr --v=3'
 
 # alias minikube-start='minikube start --insecure-registry raspberrypi.local --registry-mirror http://fc98096f.m.daocloud.io --logtostderr --cpus 4'
 # minikube config set vm-driver xhyve
@@ -241,4 +241,11 @@ alias h='hasura'
 alias kn='kubectl -n hasura'
 alias ka='kubectl --all-namespaces'
 alias gmt='go mod tidy'
-alias clash_config="code ~/.config/clash/config.yml"
+alias clash_config="code ~/.config/clash/config.yaml"
+
+
+alias ta='tmux attach'
+alias hf='history | fzf'
+alias pf='ps -ef | fzf'
+alias vf='vim $(fzf)'
+alias cf='code $(fzf)'
