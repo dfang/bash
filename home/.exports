@@ -49,14 +49,14 @@ export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.ustc.edu.cn/homebrew-bottles'
 # export HOMEBREW_BOTTLE_DOMAIN='http://7xkcej.dl1.z0.glb.clouddn.com'
 # export HOMEBERW_CURL=/usr/local/opt/curl/bin/curl
 
+# https://github.com/Homebrew/brew/blob/master/Library/Homebrew/manpages/brew.1.md.erb#L105
+# export HOMEBREW_FORCE_BREWED_CURL=1
+# export HOMEBREW_DEBUG=true
+# export HOMEBREW_CURLRC=true
+
 # 让 Homebrew 走代理更新(homebrew use curl and wget, curl and wget use enviroment variables, see proxy() in .functions)
 # export ALL_PROXY=socks5://127.0.0.1:1080
 # export all_proxy=socks5://127.0.0.1:1080
-
-# https://github.com/Homebrew/brew/blob/master/Library/Homebrew/manpages/brew.1.md.erb#L105
-export HOMEBREW_FORCE_BREWED_CURL=1
-export HOMEBREW_DEBUG=true
-export HOMEBREW_CURLRC=true
 
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
@@ -82,7 +82,7 @@ export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
 export ipfs_api='127.0.0.1:5001/api/v0'
 
 export GO111MODULE=auto
-export GOPROXY=https://goproxy.io
+# export GOPROXY=https://goproxy.cn
 
 export PYENV_ROOT="$HOME/.pyenv"
 
@@ -94,3 +94,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 # flutter mirrors for china
 export PUB_HOSTED_URL=https://pub.flutter-io.cn 
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+
+
+# for minikube
+export MINIKUBE_IMAGE_MIRROR_COUNTRY=cn
+export MINIKUBE_REGISTRY_MIRROR=https://registry.docker-cn.com
