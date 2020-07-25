@@ -1,0 +1,10 @@
+[db]
+host = localhost
+protocol = jsonrpc
+user = admin
+timeout = 120.0
+database = test
+passwd = password
+type = ODOO
+port = 8069
+
