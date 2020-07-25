@@ -5,8 +5,7 @@
     # View the current working tree status using the short format
     s = status
     st = status
-    log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-    hist = log --pretty="tformat:\"%h %ad | %s%d [%an]\"" --graph --date=short
+    history = log --pretty="tformat:\"%h %ad | %s%d [%an]\"" --graph --date=short
 
     # Show the diff between the latest commit and the current state
     d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"

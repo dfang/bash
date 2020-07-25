@@ -1,15 +1,15 @@
-server_addr: "ngrok.natapp.cn:4443"
-trust_host_root_certs: false
-
-tunnels:
-  example:
-    proto:
-      http: 3000
-  client:
-    subdomain: "client"
-    auth: "user:password"
-    proto:
-      http: 8080
+# server_addr: "ngrok.natapp.cn:4443"
+# trust_host_root_certs: false
+# 
+# tunnels:
+#   example:
+#     proto:
+#       http: 3000
+#   client:
+#     subdomain: "client"
+#     auth: "user:password"
+#     proto:
+#       http: 8080
 
 # server_addr: "tunnel.qydev.com:4443"
 # trust_host_root_certs: false
