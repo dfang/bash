@@ -111,10 +111,7 @@ export PATH="$PATH:/usr/local/kubebuilder/bin"
 
 source "$HOME/google-cloud-sdk/completion.bash.inc"
 
-alias rm='trash'
-alias grm='gin run main.go'
-alias bench='go test -run=^$ -bench=.'
-alias sync='rsync -avhP --exclude=.git --exclude-from=.gitignore '
+alias sync='echo rsync -avhP --exclude=.git --exclude-from=.gitignore --dry-run SRC DESTINATION'
 
 
 export PATH="/Users/mj/google-cloud-sdk/bin:$PATH"
@@ -157,7 +154,6 @@ export STAGING_URL='https://us-central1-jdwl-245208.cloudfunctions.net/staging_x
 # delete all pod in default
 # kubectl get pod | cut -f1 -d ' ' | tail -n+2 | xargs kubectl delete pod
 
-alias kx='kubectx'
 
 # kubectl -n ambassador get pod | cut -f1 -d " " | tail -n+2
 alias short=" cut -f1 -d ' ' | tail -n +2"

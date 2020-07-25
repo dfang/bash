@@ -120,20 +120,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 [[ -s "/Users/mj/.gvm/scripts/gvm" ]] && source "/Users/mj/.gvm/scripts/gvm"
 
-
-alias k=kubectl
-alias kn='kubectl config set-context --current --namespace '
-complete -F __start_kubectl k
-export do="--dry-run=client -o yaml"
-export extract_image="-o jsonpath={.spec.containers[].image}{\"\n\"}'"
-# tips: --dry-run -o yaml
-# kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
-# kubectl create deployment sunny --image=nginx:1.17.3-alpine $do > sunny.yaml
-# kubectl get po nginx $extract_image
-
-alias kgp='kubectl get pod'
-alias kgd='kubectl get deploy'
-alias kge='kubectl get events --sort-by=.metadata.creationTimestamp'
-
 # for python user-site packages, eg. pipenv
 export PATH=$PATH:~/.local/bin

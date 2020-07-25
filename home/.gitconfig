@@ -1,11 +1,12 @@
 [alias]
-
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
     # View the current working tree status using the short format
-    s = status -sb
+    s = status
     st = status
+    log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    hist = log --pretty="tformat:\"%h %ad | %s%d [%an]\"" --graph --date=short
 
     # Show the diff between the latest commit and the current state
     d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
@@ -15,7 +16,7 @@
     ci = commit
 
     b = branch
-    a = branch --all
+    ba = branch --all
     co = checkout
     ci = commit
     mg = merge
@@ -35,7 +36,6 @@
     unstage = reset HEAD --   # 从暂存区中撤销文件的修改
     amend = commit --amend    # 特别注意--amend重写了提交，如果你已经push到远程了，慎用这条命令
     undolastcommit = reset --soft HEAD^ # undo last commit
-
 
     tools = !echo "you can run git-extras, git-flow, git-hooks, git-now, legit"
 
@@ -124,7 +124,7 @@
 [core]
 
     # Use custom `.gitignore` and `.gitattributes`
-	excludesfile = /Users/mj/.gitignore_global
+	  excludesfile = /Users/mj/.gitignore_global
     attributesfile = ~/.gitattributes
 
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -258,7 +258,9 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
 [http]
 	proxy = http://0.0.0.0:8118
+
 [https]
 	proxy = https://0.0.0.0:8118
