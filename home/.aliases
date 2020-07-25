@@ -8,11 +8,17 @@ alias ddate='date +%Y%m%d%H%M%S'
 
 
 ######## Homebrew, rails, bundle, node RELATED ############
+# sudo ingnore alias, use this to expand 
+# https://unix.stackexchange.com/questions/148545/why-does-sudo-ignore-aliases
+alias sudo='sudo '
 
-alias bs='brew services'
-alias bsl='brew services list'
+alias bsp='brew services stop'
+alias bst='brew services start'
 alias bsr='brew services restart'
+alias bsl='brew services list'
+alias bs='brew services'
 alias bcl='brew cask list'
+
 alias be='bundle exec'
 alias bi='bundle install'
 alias bl='bundle list'

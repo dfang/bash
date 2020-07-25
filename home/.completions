@@ -1,5 +1,8 @@
 # Enable completions
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+# [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+# Enable bash-completions@2
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Add `killall` tab completion for common apps
 # complete -o "nospace" -W "networkd Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;

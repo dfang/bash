@@ -64,10 +64,46 @@ function repeat(){
     done
 }
 
+# Create a new directory and enter it
 function take() {
   mkdir -p "$1"
   cd "$1" || exit
 }
+function mkd() {
+    mkdir -p "$@" && cd "$_";
+}
+alias mcd=mkd
+
+# try
+try() {
+  echo $0
+  echo $1
+
+  dir=$(mktemp -d $1XXXXX 2>/dev/null || mktemp -d -t 'go')
+  cd "$dir"
+  echo "Current directory changed: $PWD"
+  touch README
+}
+
+try_go() {
+  try
+if [[ $1 == A ]]; then
+    echo "A"
+else
+    cat > main.go << EOF
+package main
+
+import (
+    "fmt"
+)
+func main() {
+    fmt.Println("hello go")
+}
+EOF
+fi
+}
+
+
 
 function install_odoo_addons(){
   pip install --find-links https://wheelhouse.acsone.eu/oca-9.0/ $1
@@ -98,7 +134,6 @@ function vg-debug() {
   VAGRANT_LOG=info vg ${@}
 }
 
-
 function is-bundler-installed(){
   which bundle > /dev/null 2>&1
 }
@@ -123,11 +158,6 @@ BUNDLED_COMMANDS="rails rake rspec ruby sass sass-convert spec spork"
 for CMD in $BUNDLED_COMMANDS; do
   alias $CMD="run-with-bundler $CMD"
 done
-
-# Create a new directory and enter it
-function mkd() {
-    mkdir -p "$@" && cd "$_";
-}
 
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
@@ -200,6 +230,11 @@ function gitio() {
         return 1;
     fi;
     curl -i http://git.io/ -F "url=${2}" -F "code=${1}";
+}
+
+function random_string() {
+  echo "openssl rand -base64 12 or openssl rand -hex 12"
+  echo "or date | md5sum"
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
@@ -366,6 +401,15 @@ tlog() {
   log=$((fd . -t file -e log '/usr/local/var/log'; fd . -t file -e log  '/Users/mj/Library/Logs/') | fzf)
   tail -f $log
 }
+
+# Quick edit config files in /usr/local/etc
+vetc ()
+{
+    local etc;
+    etc=$(fd . -t file '/usr/local/etc' | fzf);
+    vim $etc
+}
+
 
 # autojump
 function j() {
@@ -583,32 +627,6 @@ pushover () {
   "${PUSHOVERURL}" > /dev/null 2>&1
 }
 
-# try
-try() {
-  echo $0
-  echo $1
-
-    dir=$(mktemp -d $1XXXXX 2>/dev/null || mktemp -d -t 'go')
-    cd "$dir"
-    echo "Current directory changed: $PWD"
-    touch README
-
-if [[ $1 == A ]]; then
-    echo "A"
-else
-    cat > main.go << EOF
-package main
-
-import (
-    "fmt"
-)
-func main() {
-    fmt.Println("hello go")
-}
-EOF
-fi
-}
-
 no_proxy_for_minikube() {
   export no_proxy=$no_proxy,$(minikube ip)
 }
@@ -658,3 +676,35 @@ function list_tenant_urls() {
 function list_tenant_releases_and_namespaces() {
   helm ls | cut -f 1,7 | grep tenant- | xargs -n2 sh -c 'echo "release $0 is in namespace $1"'
 }
+
+
+# alternative for kubectl get -o yaml --export
+# kubectl get pod nginx -o yaml | export_k8s_object
+function export_k8s_object() {
+    yq d - 'metadata.resourceVersion' \
+    | yq d - 'metadata.uid' \
+    | yq d - 'metadata.annotations' \
+    | yq d - 'metadata.creationTimestamp' \
+    | yq d - 'metadata.selfLink' \
+    | yq d - 'status' \
+    | yq d - 'metadata.generateName' \
+    | yq d - 'metadata.ownerReferences'
+}
+
+function find_and_delete_ds_store_files () {
+    find . -name '.DS_Store' -type f -delete
+}
+
+# https://gist.github.com/LeonardoCardoso/6c083b90a8c327d8c82f
+# zip folder ignoring files listed on .gitignore
+function gitzip() {
+  git archive HEAD -o ${PWD##*/}.zip
+}
+
+function gitzip2() {
+  git archive --prefix ${PWD##*/}/ HEAD -o ../${PWD##*/}-$(date "+%Y.%m.%d-%H.%M.%S").zip
+}
+
+# Zip excluding specific directories and files
+# https://gist.github.com/cy-park/f9f363b2aea29789f8b4
+# fd | xargs zip -r output.zip
