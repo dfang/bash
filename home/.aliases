@@ -166,7 +166,7 @@ function create_sublime_text_link (){
 
 alias python3_server='python3 -m http.server'
 alias python2_server='python -m SimpleHTTPServer'
-alias caddy_server='caddy file-server --root public --listen :5555'
+alias caddy_server='caddy file-server --root . --listen :5555'
 
 
 # alias clash_config="code ~/.config/clash/config.yaml"
@@ -223,3 +223,5 @@ alias cwd="echo `pwd` | tr -d "\n" | pbcopy; echo \"Copied `pwd`\""
 
 # search ports in LISTEN state and KILL
 alias fk="lsof -n | grep LISTEN | fzf | awk '{print $2}' | xargs kill -n SIGHUP"
+
+alias t='tmux'
