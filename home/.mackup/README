@@ -1,0 +1,19 @@
+# TODO
+
+- dnsmasq
+- privoxy
+- ipfs
+- secrets
+
+
+RUN AND WATCH
+
+mackup backup --force --verbose
+
+
+BEST PRACTICES:
+
+1. 显式忽略不需要mackup备份的文件
+
+homesick_synced_files.cfg
+homesick.cfg
