@@ -1,0 +1,17 @@
+# https://github.com/gpakosz/.tmux
+# copy form .tmux.conf.local
+
+tmux_conf_new_session_prompt=true
+
+
+set -g mouse on
+# set -g mouse-resize-pane on
+# set -g mouse-select-pane on
+# set -g mouse-select-window on
+setw -g mouse on
+
+# Sane scrolling
+# This enables native xterm scrolling.
+set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+# sane scrolling:
+bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e; send-keys -M'"
