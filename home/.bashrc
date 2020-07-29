@@ -122,3 +122,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # for python user-site packages, eg. pipenv
 export PATH=$PATH:~/.local/bin
+. "/Users/mj/.acme.sh/acme.sh.env"
+
+# export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES

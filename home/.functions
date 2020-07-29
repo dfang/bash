@@ -1,4 +1,3 @@
-# https://git.io/JJ4pV
 
 # list all functions 
 funcs() {
@@ -328,10 +327,6 @@ function o() {
 # small enough for one screen.
 function tree() {
     tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
-}
-
-function trash() { 
-    mv "$@" ~/.Trash; 
 }
 
 # https://docs.docker.com/compose/compose-file/#network_mode
@@ -668,4 +663,27 @@ vim-delete-a-line() {
 
 kill-port-in-listen() {
   lsof -n | grep LISTEN | fzf | awk '{print $2}' | xargs kill -n SIGHUP
+}
+
+url-encode() {
+  echo "like this:"
+  echo "echo https://baidu.com | jq -sRr @uri"
+}
+
+nali() {
+  curlie http://ip-api.com/json/$1 
+}
+
+ali_ip() {
+  curlie http://ip.taobao.com/service/getIpInfo.php?ip=$1
+}
+
+come_on_caddy() {
+  if [ -z "$1" ]
+    then
+      echo "No argument supplied, serve current directory"
+      caddy file-server --root . --listen :5555
+  else
+      caddy file-server --root $1 --listen :5555
+  fi
 }
