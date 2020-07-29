@@ -1,4 +1,5 @@
 puts "touch ~/.secrets"
 puts "put your secrets,exports,access tokens in ~/.secrets, and remember to backup if you make changes"
 puts "you can install some libraries to boost productivity: "
-puts "brew install fzf fasd bash-completion"
+puts "brew install fzf fasd bash-completion ....."
+puts "for more see .brew.txt"
