@@ -46,7 +46,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # Homebrew Bottles Mirror
 # export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles'
 export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.ustc.edu.cn/homebrew-bottles'
-# export HOMEBREW_BOTTLE_DOMAIN='http://7xkcej.dl1.z0.glb.clouddn.com'
 # export HOMEBERW_CURL=/usr/local/opt/curl/bin/curl
 
 # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/manpages/brew.1.md.erb#L105
