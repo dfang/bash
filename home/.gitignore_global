@@ -11,6 +11,9 @@ npm-debug.log
 # RubyMine
 .idea
 
+# vs code
+.vscode
+
 # sass
 .sass-cache
 .sass-cache/*
