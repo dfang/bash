@@ -27,6 +27,9 @@ if ls --color > /dev/null 2>&1; then # GNU `ls`
 else # OS X `ls`
   colorflag="-G"
 fi
+# List hidden files
+alias lh='ls -l .??*'
+alias lhd='ls -ld .??*'
 # List all files colorized in long format
 alias l="ls -lhF ${colorflag}"
 alias ll="ls -lhaF ${colorflag}"
