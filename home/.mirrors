@@ -1,0 +1,32 @@
+export GO111MODULE=auto
+# export GOPROXY=https://goproxy.cn
+# export GOPROXY=https://goproxy.io
+
+
+# Disable auto update when brew install
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# Homebrew Bottles Mirror
+# export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles'
+export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.ustc.edu.cn/homebrew-bottles'
+# export HOMEBERW_CURL=/usr/local/opt/curl/bin/curl
+
+# https://github.com/Homebrew/brew/blob/master/Library/Homebrew/manpages/brew.1.md.erb#L105
+# export HOMEBREW_FORCE_BREWED_CURL=1
+# export HOMEBREW_DEBUG=true
+# export HOMEBREW_CURLRC=true
+
+# 让 Homebrew 走代理更新(homebrew use curl and wget, curl and wget use enviroment variables, see proxy() in .functions)
+# export ALL_PROXY=socks5://127.0.0.1:1080
+# export all_proxy=socks5://127.0.0.1:1080
+
+# for minikube
+export MINIKUBE_IMAGE_MIRROR_COUNTRY=cn
+export MINIKUBE_REGISTRY_MIRROR=https://registry.docker-cn.com
+
+export HEX_MIRROR="https://hexpm.upyun.com"
+export HEX_CDN="https://hexpm.upyun.com"
+
+# flutter mirrors for china
+export PUB_HOSTED_URL=https://pub.flutter-io.cn 
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn

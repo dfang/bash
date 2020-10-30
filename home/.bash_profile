@@ -102,12 +102,6 @@ alias sdkmanager="sdkmanager  --no_https \
         --proxy=http --proxy_host=localhost \
         --proxy_port=8118 "
 
-export PATH="$PATH:~/Library/flutter/bin"
-export PATH="$PATH:$HOME/.fastlane/bin"
-export PATH="$HOME/google-cloud-sdk/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.deno/bin:$PATH"
-export PATH="$PATH:/usr/local/kubebuilder/bin"
 
 source "$HOME/google-cloud-sdk/completion.bash.inc"
 

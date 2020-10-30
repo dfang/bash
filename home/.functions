@@ -1,4 +1,3 @@
-
 # list all functions 
 funcs() {
   declare -F | grep -v _ | awk '{print $3}'
@@ -325,7 +324,7 @@ function o() {
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
-function tree() {
+function tre() {
     tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
@@ -686,4 +685,108 @@ come_on_caddy() {
   else
       caddy file-server --root $1 --listen :5555
   fi
+}
+
+# gh repo clone
+grc() {
+  gh repo clone $1 -- --depth 1
+}
+
+
+create_url_file() {
+  if [[ $# -le 1 || $# -ge 3 ]] ; then
+    echo Usage: make_url_file '<namefile> <url>'
+    echo
+    echo Creates '<namefile>.url'.
+    echo Openning '<namefile>.url' in Finder, under OSX, will open '<url>' in the default browser.
+    # exit 1
+  fi
+
+  file="$1.url"
+  url=$2
+  echo '[InternetShortcut]' > "$file"
+  echo -n 'URL=' >> "$file"
+  echo $url >> "$file"
+}
+
+# https://stackoverflow.com/questions/1506521/select-row-and-element-in-awk
+kill-port() {
+  kill -9 $(lsof -i :$1 | awk 'FNR == 2 {print $2}')
+}
+
+k-apply-yaml() {
+  echo "cat - << EOF | kubectl apply -f -"
+  echo "paste yaml here"
+  echo "EOF"
+}
+
+# kubectl create deployment nginx --image=nginx --dry-run=client -o yaml
+# cat - << EOF | kubectl apply -f -
+# for i in {1..10}; do export "SERVICE_$i"="$i"; done
+
+
+readonly RETRY_COUNT="${RETRY_COUNT:-3}"
+readonly RETRY_SLEEP="${RETRY_SLEEP:-2}"
+curl_with_retry() {
+  curl -fqsSL --retry "$RETRY_COUNT" --retry-delay "$RETRY_SLEEP" "$@"
+}
+
+
+#  remove empty lines
+#  gsed '/^$/d' /tmp/data.txt
+#  remove trailing whitespace
+#  gsed -i 's/[ \t]*$//' alexa.txt
+#  #If you have coreutils installed and want a number inbewtween a value
+#  shuf -i MIN-MAX -n 1
+#  #or you can use bash 
+#  $RANDOM
+
+
+# stuck when delete namespace
+# for ns in $(kubectl get ns --field-selector status.phase=Terminating -o jsonpath='{.items[*].metadata.name}'); do  kubectl get ns $ns -ojson | jq '.spec.finalizers = []' | kubectl replace --raw "/api/v1/namespaces/$ns/finalize" -f -; done
+
+
+# xargs sed
+# echo "pattern" | xargs -I '{}' sed -i 's/qotm/{}/g' file.txt
+# sed -i "s/$(echo "some pattern")/replacement/g" file.txt
+
+# git rev-parse --short HEAD
+
+# docker run --rm -it --entrypoint sh xxx
+runT() {
+  docker run --rm -it $@
+}
+
+# kubectl get pod -o wide | awk '{print $1 " " $3 " " $6}' | column -t
+
+# copy secret to another namespace
+# k get secret wildcard-cert -o yaml | grep -v '^\s*namespace:\s' | kubectl apply -n whoami -f -
+
+# copy secrets or configmap to another namespaces
+# https://bit.ly/2HBR04c
+# or use kubed
+# kubectl get secret wildcard-cert-prod -n cert-manager -o json | jq '{apiVersion,data,kind,metadata,type} | .metadata |= {"annotations", "name"}' | kubectl apply -n whoami -f -
+
+
+# lsof -n -i | awk '{ print $1,$9; }' | sort -u
+
+
+listening() {
+    if [ $# -eq 0 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P
+    elif [ $# -eq 1 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+    else
+        echo "Usage: listening [pattern]"
+    fi
+}
+
+
+kill-port ()
+{
+    echo $1
+    lsof -i :$1 | grep LISTEN | awk '{print $2}'
+    pid=$(lsof -i :$1 | grep LISTEN | awk '{print $2}')
+    echo $pid
+    kill -9 $pid
 }
