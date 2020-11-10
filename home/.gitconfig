@@ -31,6 +31,9 @@
     today = log --since=midnight --author='dfang' --oneline
     changed = whatchanged
 
+    # if git branch contains a commit, usage: git contains <hash>
+    contains = !sh -c 'git branch -a --contains $1' -
+
     dh1 = diff HEAD~1         # diff HEAD from last commit
     unstage = reset HEAD --   # 从暂存区中撤销文件的修改
     amend = commit --amend    # 特别注意--amend重写了提交，如果你已经push到远程了，慎用这条命令
