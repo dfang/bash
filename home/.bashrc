@@ -65,8 +65,6 @@ bind '"\C-f": forward-word'
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GOS_UPSTREAM_ADDRESS=https://goproxy.cn
 #export GOPATH=$HOME/odev
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
 # NAMESPACE is the list of namespaces the Operator will watch
 export NAMESPACE=pgouser1,pgouser2
 
@@ -124,3 +122,15 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:~/.local/bin
 
 export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
+
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
+
+
+export AWS_REGION=us-west-1
+proxy > /dev/null
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export HOMEBREW_NO_AUTO_UPDATE=1

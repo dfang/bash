@@ -790,3 +790,45 @@ kill-port ()
     echo $pid
     kill -9 $pid
 }
+
+# usage: docker images | grep echoserver | delete-images
+delete-images () {
+  awk '{print $3}' | xargs docker rmi -f
+}
+
+# remove last line
+# https://bit.ly/3oD2cOB
+# sed -i '$ d' foo.txt
+# sed -i '' -e '$ d' foo.txt (Mac or gsed)
+# sudo -k
+# echo 127.0.0.1 www.example.com | sudo tee -a /etc/hosts
+
+# alias kge="kubectl get event --sort-by=.metadata.creationTimestamp"
+# kubectl auth can-i "*" "*" --as system:serviceaccount:kube-system:default
+
+smart-wget() {
+  BASE=$(basename $1)  # https://github.com/vmware-tanzu/sonobuoy/releases/download/v0.19.0/sonobuoy_0.19.0_darwin_amd64.tar.gz
+  FILE=`basename "$1"`
+  wget -O ${FILE} $1
+}
+
+# docker images --format "{{.Repository}}:{{.Tag}}"
+
+open-k8s-dashboard() {
+  kubectl -n kube-system get $(kubectl -n kube-system get secret default-token-xtvbt -o name) -o jsonpath={.data.token} | base64 -d | pbcopy
+  echo "token copied to clipboard"
+  URL="http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login"
+  echo $URL
+  open $URL
+}
+
+# start a pod with psql for debugging database connection
+pod-psql () {
+  k run -it --rm debug --image=cmd.cat/psql -- sh
+}
+
+# sleep a namespace
+# kubectl get deploy -n traefik -o name | xargs -I{} kubectl -n traefik scale {} --replicas=0
+
+# port-forward to svc instead of pod
+# kubectl -n loki port-forward svc/loki-grafana 3000:80
