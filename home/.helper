@@ -1,0 +1,24 @@
+# Helper functions
+is_true() (
+    shopt -s nocasematch
+    # Use the -z operator, and consider empty strings false
+    if [ -z "$1" ] || [[ $1 =~ ^(false|0)$ ]]; then
+      return 1 # false
+    else
+      return 0 # true
+    fi
+)
+
+# output debug level log
+function debug() { ((DEBUG_LOG)) && echo "### $*"; }
+
+# by default, some plugins not loaded, you can load it manually
+function load_plugin() { 
+  if [ -z "$1" ] || [[ $1 =~ ^(false|0)$ ]]; then
+    ls $HOME/.plugins | xargs -n 1
+    return 1 # false
+  else
+    source "$HOME/.plugins/$1.sh" 
+    return 0 # true
+  fi
+}

@@ -1,0 +1,20 @@
+alias psql-staging='psql postgres://postgres:nDDy5ilok76E5ikG@47.103.58.246:16432/qor-staging'
+alias psql-aws='psql postgres://postgres:nDDy5ilok76E5ikG@jdwl.c9d80cdaazgt.rds.cn-north-1.amazonaws.com.cn
+:5432/qor'
+alias psql-prod='psql postgres://postgres:nDDy5ilok76E5ikG@47.103.58.246:16432/qor-prod'
+
+export STAGING_URL='https://us-central1-jdwl-245208.cloudfunctions.net/staging_xsjd_pubsub_topic_publish'
+
+export GOOGLE_CLOUD_PROJECT=jdwl-245208
+
+# Created by mirror-config-china
+export IOJS_ORG_MIRROR=https://npm.taobao.org/mirrors/iojs
+export NODIST_IOJS_MIRROR=https://npm.taobao.org/mirrors/iojs
+export NVM_IOJS_ORG_MIRROR=https://npm.taobao.org/mirrors/iojs
+export NVMW_IOJS_ORG_MIRROR=https://npm.taobao.org/mirrors/iojs
+export NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+export NODIST_NODE_MIRROR=https://npm.taobao.org/mirrors/node
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+export NVMW_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+export NVMW_NPM_MIRROR=https://npm.taobao.org/mirrors/npm
+# End of mirror-config-china

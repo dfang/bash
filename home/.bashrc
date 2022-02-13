@@ -2,7 +2,10 @@
 # * ~/.exports can be used to extend `$PATH`.
 # * ~/.extras can be used for other settings you don’t want to commit.
 # * ~/.secrets puts secret env credentials such as AWS_ACCESS_SECRET_KEY, you must not commit it.
-for file in ~/.{profile,exports,aliases,bash_prompt,functions,completions,extras,secrets}; do
+# * ~/.aliases can be used for aliases.
+# * ~/.functions can be used for functions.
+# * ~/.bash_prompt can be used for custom bash prompt.
+for file in ~/.{exports,bash_prompt,aliases,functions,extras,secrets}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -56,81 +59,17 @@ bind '"\C-f": forward-word'
 
 # eval $(docker-machine env dev)
 
-# . /Users/mj23/.env
-
 # clash_proxy > /dev/null
 
-
-# kubectl krew plugin manager
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GOS_UPSTREAM_ADDRESS=https://goproxy.cn
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 #export GOPATH=$HOME/odev
-# NAMESPACE is the list of namespaces the Operator will watch
-export NAMESPACE=pgouser1,pgouser2
-
-# PGO_OPERATOR_NAMESPACE is the namespace the Operator is deployed into
-export PGO_OPERATOR_NAMESPACE=pgo
-
-# PGO_CMD values are either kubectl or oc, use oc if Openshift
-export PGO_CMD=kubectl
-
-# the directory location of the Operator scripts
-export PGOROOT=$GOPATH/src/github.com/crunchydata/postgres-operator
-
-# the version of the Operator you run is set by these vars
-export PGO_IMAGE_PREFIX=crunchydata
-export PGO_BASEOS=centos7
-export PGO_VERSION=4.0.0
-export PGO_IMAGE_TAG=$PGO_BASEOS-$PGO_VERSION
-
-# for the pgo CLI to authenticate with using TLS
-export PGO_CA_CERT=$PGOROOT/conf/postgres-operator/server.crt
-export PGO_CLIENT_CERT=$PGOROOT/conf/postgres-operator/server.crt
-export PGO_CLIENT_KEY=$PGOROOT/conf/postgres-operator/server.key
-
-# common bash functions for working with the Operator
-setip() 
-{ 
-	export PGO_APISERVER_URL=https://`$PGO_CMD -n "$PGO_OPERATOR_NAMESPACE" get service postgres-operator -o=jsonpath="{.spec.clusterIP}"`:8443 
-}
-
-alog() {
-$PGO_CMD  -n "$PGO_OPERATOR_NAMESPACE" logs `$PGO_CMD  -n "$PGO_OPERATOR_NAMESPACE" get pod --selector=name=postgres-operator -o jsonpath="{.items[0].metadata.name}"` -c apiserver
-}
-
-olog () {
-$PGO_CMD  -n "$PGO_OPERATOR_NAMESPACE" logs `$PGO_CMD  -n "$PGO_OPERATOR_NAMESPACE" get pod --selector=name=postgres-operator -o jsonpath="{.items[0].metadata.name}"` -c operator
-}
-
-slog () {
-$PGO_CMD  -n "$PGO_OPERATOR_NAMESPACE" logs `$PGO_CMD  -n "$PGO_OPERATOR_NAMESPACE" get pod --selector=name=postgres-operator -o jsonpath="{.items[0].metadata.name}"` -c scheduler
-}
-# export KUBECONFIG=/Users/mj/.kube/microk8s
-
-
-alias cmk='cd `mktemp -d -p /tmp`'
-
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-export PATH="$PATH:~/bin/istio-1.5.4/bin"
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
-[[ -s "/Users/mj/.gvm/scripts/gvm" ]] && source "/Users/mj/.gvm/scripts/gvm"
 
 # for python user-site packages, eg. pipenv
 export PATH=$PATH:~/.local/bin
 
-export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
-
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-
-
-
 export AWS_REGION=us-west-1
+
 proxy > /dev/null
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-export HOMEBREW_NO_AUTO_UPDATE=1

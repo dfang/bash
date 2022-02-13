@@ -10,3 +10,5 @@
 
 .rbenv
 !.rbenv/default-gems
+
+.local

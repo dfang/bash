@@ -19,7 +19,7 @@
     co = checkout
     ci = commit
     mg = merge
-    
+
     ff = merge --ff-only
     noff = merge --no-ff
     fa = fetch --all
@@ -42,7 +42,7 @@
     tools = !echo "you can run git-extras, git-flow, git-hooks, git-now, legit"
 
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    
+
     # `git di $number` shows the diff between the state `$number` revisions ago and the current state
     di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
@@ -126,7 +126,7 @@
 [core]
 
     # Use custom `.gitignore` and `.gitattributes`
-	excludesfile = /Users/mj/.gitignore_global
+    excludesfile = /Users/mj/.gitignore_global
     attributesfile = ~/.gitattributes
 
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -170,8 +170,8 @@
 [commit]
 
     # https://help.github.com/articles/signing-commits-using-gpg/
-	gpgsign = true
-	template = /Users/mj/.stCommitMsg
+	  # gpgsign = true
+	  # template = /Users/mj/.stCommitMsg
 
 [diff]
 
@@ -198,8 +198,7 @@
     keepBackup = true
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 
 [push]
 
@@ -244,25 +243,25 @@
     smudge = git-media-smudge %f
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
     required = true
-	process = git-lfs filter-process
+    process = git-lfs filter-process
 
 [user]
-	name = fang duan
-	email = df1228@gmail.com
-	signingkey = 855D3A9E2FBFCC84787FC8A43B0F7D1148EB3839
+    name = fang duan
+    email = df1228@gmail.com
+    signingkey = 855D3A9E2FBFCC84787FC8A43B0F7D1148EB3839
 
 [init]
     templatedir = ~/.git-template-with-git-hooks
 
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 [http]
-	proxy = http://0.0.0.0:8118
+    proxy = http://0.0.0.0:8118
 
 [https]
-	proxy = http://0.0.0.0:8118
+    proxy = http://0.0.0.0:8118

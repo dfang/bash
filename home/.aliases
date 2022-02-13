@@ -110,8 +110,6 @@ alias addons="cd ~/Library/Application\ Support/Odoo/addons/"
 alias download_egghead_videos='proxychains4 -q youtube-dl -i -o "%(autonumber)s-%(title)s.%(ext)s" -a list.txt'
 alias ywb='echo running yarn add -D webpack webpack-dev-server babel-core babel-loader babel-preset-env && yarn add -D webpack webpack-dev-server babel-core babel-loader babel-preset-env'
 
-
-
 ######## Examples ############
 # find . -type f -name '*.DS_Store'
 
@@ -127,7 +125,6 @@ alias pq='proxychains4 -q'
 # alias j='z'
 # alias j='fasd_cd -d'
 # alias v='vi `fzf`'
-
 
 
 ######## OS RELATED ############
@@ -156,31 +153,20 @@ alias show_desktop_icons="defaults write com.apple.finder CreateDesktop -bool tr
 # Finally, clear download history from quarantine. https://mths.be/bum
 alias empty_trash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
-function create_sublime_text_link (){
-  echo "you need to run this"
-  printf "ln -sf /Applications/Sublime\\\ Text.app/Contents/SharedSupport/bin/subl ~/bin/sb\n"
-}
-
-
-
 # alias AndroidStudio="open -a /Applications/Android\ Studio.app"
 # alias studio="open -a /Applications/Android\ Studio.app"
-
 
 alias python3_server='python3 -m http.server'
 alias python2_server='python -m SimpleHTTPServer'
 alias caddy_server='caddy file-server --root . --listen :5555'
 
-
 # alias clash_config="code ~/.config/clash/config.yaml"
-
 
 alias ta='tmux attach'
 alias hf='history | fzf'
 alias pf='ps -ef | fzf'
 alias vf='vim $(fzf)'
 alias cf='code $(fzf)'
-
 
 ######## DOCKER AND K8S RELATED ############
 alias kx='kubectx'
@@ -221,7 +207,6 @@ alias kgp='kubectl get pod'
 alias kgd='kubectl get deploy'
 alias kge='kubectl get events --sort-by=.metadata.creationTimestamp'
 
-
 # copy `pwd`
 alias cwd="echo `pwd` | tr -d "\n" | pbcopy; echo \"Copied `pwd`\""
 
@@ -229,3 +214,5 @@ alias cwd="echo `pwd` | tr -d "\n" | pbcopy; echo \"Copied `pwd`\""
 alias fk="lsof -n | grep LISTEN | fzf | awk '{print $2}' | xargs kill -n SIGHUP"
 
 alias t='tmux'
+
+alias cmk='cd `mktemp -d -p /tmp`'

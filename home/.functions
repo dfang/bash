@@ -677,6 +677,11 @@ ali_ip() {
   curlie http://ip.taobao.com/service/getIpInfo.php?ip=$1
 }
 
+create_sublime_text_link (){
+  echo "you need to run this"
+  printf "ln -sf /Applications/Sublime\\\ Text.app/Contents/SharedSupport/bin/subl ~/bin/sb\n"
+}
+
 come_on_caddy() {
   if [ -z "$1" ]
     then

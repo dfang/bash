@@ -4,14 +4,18 @@
 # Enable bash-completions@2
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
+# echo -ne "$USER@$HOSTNAME:${PWD/$HOME/\~}\$ "
+# source /usr/local/etc/profile.d/bash_completion.sh
+# echo -ne '\e[2J\e[H'
+
 # Add `killall` tab completion for common apps
 # complete -o "nospace" -W "networkd Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
 # Add knife completions
-complete -o "nospace" -W "digital_ocean zero solo ec2 azure" knife;
+# complete -o "nospace" -W "digital_ocean zero solo ec2 azure" knife;
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+# [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
 # Chef bash completion
 # eval "$(chef shell-init bash)"
@@ -26,7 +30,7 @@ complete -o "nospace" -W "digital_ocean zero solo ec2 azure" knife;
 # if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
 # 	complete -o default -o nospace -F _git g;
 # fi;
-__git_complete g __git_main
+# __git_complete g __git_main
 
 # Enable tab completion for `k` by marking it as an alias for `kubectl'
 # complete -o default -o nospace -F __start_kubectl k
