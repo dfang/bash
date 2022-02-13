@@ -26,3 +26,4 @@ Termfile
 lib/rails
 lib/generators
 lib/templates
+.envrc
