@@ -11,4 +11,8 @@
 .rbenv
 !.rbenv/default-gems
 
-.local
+home/.ShadowsocksX-NG/*
+!home/.ShadowsocksX-NG/README
+!home/.ShadowsocksX-NG/user-rule.txt
+
+.bash.local

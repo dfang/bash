@@ -73,3 +73,7 @@ export PATH=$PATH:~/.local/bin
 export AWS_REGION=us-west-1
 
 proxy > /dev/null
+
+# PUT ssh alias and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY etc in .bash.local
+# and add it to .gitignore
+source ~/.bash.local

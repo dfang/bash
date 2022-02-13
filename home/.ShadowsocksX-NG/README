@@ -12,7 +12,8 @@ https_proxy=https://0.0.0.0:8118
 
 本目录下的gfwlist.txt由Shadowsocks-NG可由更新
 gfwlist.js 是由gfwlist.txt 和 user-rule.txt 合成的
-所以这两个文件不用加入到git
+user-rule.txt 是自定义编辑的
+所以gfwlist.js和是由gfwlist.txt不用加入到git
 
 
 https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
