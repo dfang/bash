@@ -451,20 +451,19 @@ clash_proxy() {
 
 set-git-proxy() {
     echo "# set git http.proxy"
-    echo "git config --global http.proxy $http_proxy"
+    echo "git config --global http.proxy $http_proxy https.proxy $http_proxy" 
     git config --global http.proxy $http_proxy
     git config --global https.proxy $http_proxy
-    echo "# now git proxy set to"
-    git config --global http.proxy
-    git config --global https.proxy
+    echo "# use git config --global -l | grep proxy to show git proxy config"
+    git config --global -l | grep proxy
 }
 
 
 unset-git-proxy() {
     echo "# unset git http.proxy"
+    echo "# use git config --global -l | grep proxy to show git proxy config"
     git config --global --unset http.proxy
     git config --global --unset https.proxy
-    echo "git config --global -l"
     git config --global http.proxy
 }
 

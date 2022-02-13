@@ -73,9 +73,6 @@ alias run_top_in_docker='docker run -it --rm --privileged --pid=host justincorma
 
 alias ns='netstat -anl | grep -w LISTEN'
 
-export STAGING_URL='https://us-central1-jdwl-245208.cloudfunctions.net/staging_xsjd_pubsub_topic_publish'
-
-
 # delete all pod in default
 # kubectl get pod | cut -f1 -d ' ' | tail -n+2 | xargs kubectl delete pod
 
