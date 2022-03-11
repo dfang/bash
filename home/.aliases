@@ -9,7 +9,8 @@
 # https://unix.stackexchange.com/questions/148545/why-does-sudo-ignore-aliases
 alias sudo='sudo '
 
-alias date="date +'%Y/%m/%d %H:%M:%S'"
+alias ddate1="date +'%Y/%m/%d %H:%M:%S'"
+alias ddate2="date +'%Y-%m-%d-%H-%M-%S'"
 alias rm='trash'
 alias h='hasura'
 alias ka='kubectl --all-namespaces'
