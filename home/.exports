@@ -84,3 +84,23 @@ export ipfs_api='127.0.0.1:5001/api/v0'
 # # pyenv install 3.7.0
 # # https://github.com/pyenv/pyenv/wiki/common-build-problems
 # # For compilers to find readline you may need to set:
+#
+#
+
+export NODEJS_ORG_MIRROR=https://cdn.npmmirror.com/binaries/node
+export NVM_NODEJS_ORG_MIRROR=https://cdn.npmmirror.com/binaries/node
+export PHANTOMJS_CDNURL=https://cdn.npmmirror.com/binaries/phantomjs
+export CHROMEDRIVER_CDNURL=https://cdn.npmmirror.com/binaries/chromedriver
+export OPERADRIVER_CDNURL=https://cdn.npmmirror.com/binaries/operadriver
+export ELECTRON_MIRROR=https://cdn.npmmirror.com/binaries/electron/
+export ELECTRON_BUILDER_BINARIES_MIRROR=https://cdn.npmmirror.com/binaries/electron-builder-binaries/
+export SASS_BINARY_SITE=https://cdn.npmmirror.com/binaries/node-sass
+export SWC_BINARY_SITE=https://cdn.npmmirror.com/binaries/node-swc
+export NWJS_URLBASE=https://cdn.npmmirror.com/binaries/nwjs/v
+export PUPPETEER_DOWNLOAD_HOST=https://cdn.npmmirror.com/binaries
+export npm_config_sharp_binary_host=https://cdn.npmmirror.com/binaries/sharp
+export npm_config_sharp_libvips_binary_host=https://cdn.npmmirror.com/binaries/sharp-libvips
+export npm_config_robotjs_binary_host=https://cdn.npmmirror.com/binaries/robotjs
+export CYPRESS_DOWNLOAD_MIRROR=https://cdn.npmmirror.com/binaries/cypress
+export npm_config_fsevents_binary_host=https://cdn.npmmirror.com/binaries/fsevents
+

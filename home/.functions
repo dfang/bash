@@ -78,6 +78,7 @@ alias mcd=mkd
 
 # try
 try() {
+  cd /tmp
   echo $0
   echo $1
   dir=$(mktemp -d $1XXXXX 2>/dev/null || mktemp -d -t 'go')
@@ -102,6 +103,13 @@ func main() {
 }
 EOF
 fi
+}
+
+try_elixir(){
+  try
+  local prj
+  prj=`haikunator | sed "s/-/_/g"`
+  mix new $prj && cd $prj && mix deps.get
 }
 
 function install_odoo_addons(){
