@@ -29,7 +29,7 @@ fi
 
 if is_true $ENABLE_PYENV; then
   load_plugin "pyenv"
-fi  
+fi
 
 if is_true $ENABLE_NVM; then
   load_plugin "nvm"
@@ -82,14 +82,19 @@ alias short=" cut -f1 -d ' ' | tail -n +2"
 
 # helm ls --output json | jq -r '.Releases[] | .Namespace'
 # helm ls | cut -f7 | grep tenant- \
-# helm ls | cut -f 1,7 | grep tenant- 
+# helm ls | cut -f 1,7 | grep tenant-
 # helm ls | cut -f 1,7 | grep tenant- | xargs -n2 sh -c 'echo "release $0 is in namespace $1"'
 # helm upgrade calling-lynx --set image.repository=dfang/qor-demo,image.tag=latest --namespace tenant-15d99242e9f7235d220d charts/qor
 # helm ls | cut -f 1,7 | grep tenant- | xargs -n2 sh -c 'echo "helm upgrade $0 --set image.repository=dfang/qor-demo,image.tag=latest --namespace $1 charts/qor"'
-# helm ls | awk '/DEPLOYED/ { print $1 }' 
+# helm ls | awk '/DEPLOYED/ { print $1 }'
 # kubectl get svc --all-namespaces -l chart=qor-v0.1.0
 
 export GOROOT=/usr/local/opt/go/libexec
 
 # to print the name and creation timestamp of each pod separated by a newline
 # kubectl get pods -o go-template --template='{{range .items}}{{printf "%s %s\n" .metadata.name .metadata.creationTimestamp}}{{end}}'
+
+
+# export JAVA_17_HOME=$(/usr/libexec/java_home -v17)
+# alias java17='export JAVA_HOME=$JAVA_17_HOME'
+# java17 # default to Java 17

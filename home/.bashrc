@@ -10,14 +10,25 @@ for file in ~/.{exports,bash_prompt,aliases,functions,extras,secrets}; do
 done;
 unset file;
 
+
+################## History related settings
+export HISTSIZE=5000                     # 
+export HISTFILESIZE=100000               # 
+shopt -s histappend                      # append to history, , rather than overwriting it
+export HISTIGNORE="ls:ps:history"        # Don’t save ls, ps and history commands:
+export HISTCONTROL=ignoredups:erasedups:ignorespace  # no duplicate entries, leading space hides commands from history
+shopt -s cmdhist                         # Store multi-line commands in one history entry:
+export HISTFILE=~/.bash_history_$(date '+%Y%m%d').txt
+# export HISTTIMEFORMAT="%h %d %H:%M:%S "
+# https://www.shellhacks.com/tune-command-line-history-bash/
+# export PROMPT_COMMAND='$PROMPT_COMMAND; history -a'
+# https://linuxhint.com/bash_command_history_usage/
+# https://www.rootusers.com/17-bash-history-command-examples-in-linux/
+# https://unix.stackexchange.com/questions/41739/keep-only-successful-commands-in-bash-history
+# https://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
-
-# Append to the Bash history file, rather than overwriting it
-shopt -s histappend;
-
-# Store multi-line commands in one history entry:
-shopt -s cmdhist
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
@@ -36,6 +47,10 @@ done;
 # now ctrl+b/f move word by word, bind -p to show key bindings
 bind '"\C-b": backward-word'
 bind '"\C-f": forward-word'
+
+# https://stackoverflow.com/a/57968002
+bind '"\e[1;5C": forward-word'
+bind '"\e[1;5D": backward-word'
 
 # keychain ~/.ssh/id_rsa
 # source ~/.ssh-agent > /dev/null

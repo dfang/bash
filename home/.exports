@@ -2,16 +2,6 @@
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
-# https://www.shellhacks.com/tune-command-line-history-bash/
-export HISTSIZE=2000
-export HISTFILESIZE=100000
-# export HISTTIMEFORMAT="%h %d %H:%M:%S "
-# export PROMPT_COMMAND='$PROMPT_COMMAND; history -a'
-# Ignore in history when cmd start from space
-export HISTCONTROL=ignorespace:erasedups
-# Don’t save ls, ps and history commands:
-export HISTIGNORE="ls:ps:history"
-
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}";
 
@@ -103,4 +93,3 @@ export npm_config_sharp_libvips_binary_host=https://cdn.npmmirror.com/binaries/s
 export npm_config_robotjs_binary_host=https://cdn.npmmirror.com/binaries/robotjs
 export CYPRESS_DOWNLOAD_MIRROR=https://cdn.npmmirror.com/binaries/cypress
 export npm_config_fsevents_binary_host=https://cdn.npmmirror.com/binaries/fsevents
-

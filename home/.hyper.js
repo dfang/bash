@@ -97,7 +97,7 @@ module.exports = {
 
     // for advanced config flags please refer to https://hyper.is/#cfg
     hyperline: {
-      plugins: ["hostname","ip", "network", "memory", "battery", "cpu"]
+      plugins: ["hostname", "ip", "network", "memory", "battery", "cpu"]
     },
   },
 
