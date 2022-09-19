@@ -22,8 +22,17 @@ Termfile
 
 .envrc
 
+# Compiled Python files
+*.pyc
 
-lib/rails
-lib/generators
-lib/templates
-.envrc
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes

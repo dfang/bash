@@ -198,7 +198,8 @@
     keepBackup = true
 
 [difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 
 [push]
 
@@ -255,13 +256,9 @@
 
 [init]
     templatedir = ~/.git-template-with-git-hooks
+	defaultBranch = master
 
 [mergetool "sourcetree"]
-    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-    trustExitCode = true
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
-[http]
-    proxy = http://0.0.0.0:8118
-
-[https]
-    proxy = http://0.0.0.0:8118

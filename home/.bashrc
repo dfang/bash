@@ -18,7 +18,7 @@ shopt -s histappend                      # append to history, , rather than over
 export HISTIGNORE="ls:ps:history"        # Don’t save ls, ps and history commands:
 export HISTCONTROL=ignoredups:erasedups:ignorespace  # no duplicate entries, leading space hides commands from history
 shopt -s cmdhist                         # Store multi-line commands in one history entry:
-export HISTFILE=~/.bash_history_$(date '+%Y%m%d').txt
+# export HISTFILE=~/.bash_history_$(date '+%Y%m%d').txt
 # export HISTTIMEFORMAT="%h %d %H:%M:%S "
 # https://www.shellhacks.com/tune-command-line-history-bash/
 # export PROMPT_COMMAND='$PROMPT_COMMAND; history -a'
@@ -29,6 +29,8 @@ export HISTFILE=~/.bash_history_$(date '+%Y%m%d').txt
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
+
+shopt -s extglob
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
@@ -87,8 +89,25 @@ export PATH=$PATH:~/.local/bin
 
 export AWS_REGION=us-west-1
 
-proxy > /dev/null
+# proxy > /dev/null
 
 # PUT ssh alias and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY etc in .bash.local
 # and add it to .gitignore
 source ~/.bash.local
+
+bind "\C-o":jd
+
+
+
+export JAVA_HOME=/Users/mj/.asdf/installs/java/adoptopenjdk-8.0.332+9/
+
+
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export ANDROID_NDK_HOME="/usr/local/share/android-ndk"

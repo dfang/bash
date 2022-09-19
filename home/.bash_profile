@@ -98,3 +98,6 @@ export GOROOT=/usr/local/opt/go/libexec
 # export JAVA_17_HOME=$(/usr/libexec/java_home -v17)
 # alias java17='export JAVA_HOME=$JAVA_17_HOME'
 # java17 # default to Java 17
+
+# eval "$(ssh-agent)"
+

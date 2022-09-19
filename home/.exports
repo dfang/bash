@@ -37,7 +37,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # export PATH=/usr/local/miniconda3/bin:"$PATH"
 
 # Java
-export JAVA_HOME=`/usr/libexec/java_home`
+# export JAVA_HOME=`/usr/libexec/java_home`
 
 # Helm
 export HELM_HOME=$HOME/.helm
@@ -65,6 +65,12 @@ export PATH="$PATH:$HOME/.serverless/bin"
 
 export ipfs_api='127.0.0.1:5001/api/v0'
 
+# ETCD
+export ETCD_API=3
+
+# Gloo  solo.io
+export PATH=$HOME/.gloo/bin:$PATH
+
 # 
 # use asdf to manage python versions
 # 
@@ -91,5 +97,33 @@ export PUPPETEER_DOWNLOAD_HOST=https://cdn.npmmirror.com/binaries
 export npm_config_sharp_binary_host=https://cdn.npmmirror.com/binaries/sharp
 export npm_config_sharp_libvips_binary_host=https://cdn.npmmirror.com/binaries/sharp-libvips
 export npm_config_robotjs_binary_host=https://cdn.npmmirror.com/binaries/robotjs
-export CYPRESS_DOWNLOAD_MIRROR=https://cdn.npmmirror.com/binaries/cypress
+# export CYPRESS_DOWNLOAD_MIRROR=https://cdn.npmmirror.com/binaries/cypress
 export npm_config_fsevents_binary_host=https://cdn.npmmirror.com/binaries/fsevents
+
+
+# CYPRESS_DOWNLOAD_MIRROR
+# https://blog.csdn.net/weixin_36221149/article/details/116761778
+export CYPRESS_DOWNLOAD_MIRROR=https://download.cypress.io/desktop
+# set CYPRESS_INSTALL_BINARY=D:\path\to\your\app\cypress.zip
+
+alias cnpm="npm --registry=https://registry.npmmirror.com \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npmmirror.com/mirrors/node \
+--userconfig=$HOME/.cnpmrc"
+
+
+# https://download.cypress.io/desktop
+# https://www.lfhacks.com/tech/chromium-behind-the-wall/
+# 指定安装路径
+
+# 为了能顺利安装，要避开 npm 默认下载路径 ，然后指定安装包的引用路径：
+
+#     使用官方下载地址
+
+# 这种方法适合第一次安装，只要把下载地址 https://download.cypress.io/desktop 赋给环境变量 CYPRESS_DOWNLOAD_MIRROR （各类系统下设置环境变量的方法见 下文），这时候再执行 npm install 时就能从环境变量中指定的官方地址下载。
+
+#     指定本地路径
+
+# 这种方法适合本地已经有安装包，需要反复安装的情景。只要把本地文件地址（绝对路径，精确到文件名）赋给环境变量 CYPRESS_INSTALL_BINARY ，再执行 npm install 时就能自动下载并安装。
+
+# 下面来看如何在不同系统下指定环境变量。

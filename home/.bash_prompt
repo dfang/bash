@@ -44,7 +44,7 @@
 # 方案预览:  λ  
 # https://apple.stackexchange.com/questions/118464/how-to-find-out-which-terminal-app-iterm-or-terminal-is-running-from-within-ba
 # if [ "$TERM_PROGRAM" == "iTerm.app" ]; then
-# 	export PS1='\[\e[32m\]\n λ \[\e[36m\] '
+	export PS1='\[\e[32m\]\n λ \[\e[36m\] '
 # else
 # 	export PS1='\[\e[32m\]\w λ \[\e[36m\] '
 # fi

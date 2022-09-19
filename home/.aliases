@@ -217,3 +217,5 @@ alias fk="lsof -n | grep LISTEN | fzf | awk '{print $2}' | xargs kill -n SIGHUP"
 alias t='tmux'
 
 alias cmk='cd `mktemp -d -p /tmp`'
+alias dr="docker run --rm $@"
+alias dri="docker run -it --rm $@"

@@ -844,3 +844,43 @@ pod-psql () {
 
 # port-forward to svc instead of pod
 # kubectl -n loki port-forward svc/loki-grafana 3000:80
+
+# turn a file url in github to raw url
+download-github-raw-file() {
+  if [ -z "$1" ]
+  then
+    echo "No github file url supplied"
+  fi
+  echo $1 | sed "s/github.com/raw.githubusercontent.com/" | sed "s/blob\///" | xargs -t wget
+}
+
+killx (){
+  if [ -z "$1" ]
+  then
+    echo "Error: No process name provided"
+    echo "Usage: killx ruby"
+    echo "Note: The Actual Command is: ps aux | grep -v grep | grep $1 | awk '{print \$2}' | xargs -t kill -s SIGTERM"echo "Usage: killx ruby"
+  else
+    ps aux | grep -v grep | grep $1 | awk '{print $2}' | xargs -t kill -s SIGTERM
+  fi
+}
+
+# fzf directories and cd
+jd(){
+  cd $(fd --type d | fzf)
+}
+
+# ssh-add -D and ssh-add
+add-ssh-keys(){
+ ssh-add -D && fd --type f id_rsa ~/.ssh | grep -v pub | fzf | xargs ssh-add
+}
+
+
+pskill() {
+    local pid
+
+    pid=$(ps -ax | grep $1 | grep -v grep | gawk '{ print $1 }')
+    echo -n "killing $1 (process $pid)..."
+    kill -9 $pid
+    echo "slaughtered."
+}
