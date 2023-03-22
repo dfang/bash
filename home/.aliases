@@ -219,3 +219,11 @@ alias t='tmux'
 alias cmk='cd `mktemp -d -p /tmp`'
 alias dr="docker run --rm $@"
 alias dri="docker run -it --rm $@"
+
+
+dockerproxy() {
+    echo "docker pull $1"
+    docker pull dockerproxy.com/$1
+    docker tag dockerproxy.com/$1 $1
+    docker rmi dockerproxy.com/$1
+}
