@@ -14,7 +14,7 @@ indent_size = 4
 end_of_line = LF
 
 # 4 space indentation
-[*.py]
+[*.{py,mustache}]
 indent_style = space
 indent_size = 4
 
