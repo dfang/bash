@@ -29,10 +29,10 @@
 # 方案预览: $
 # export PS1="\e[0;31m \w \n\$ \e[m"
 
-# 方案预览: mj@fangs-MacBook-Pro:~ $ 
+# 方案预览: mj@fangs-MacBook-Pro:~ $
 # export PS1="\[$(tput setaf 1)\]\u@\h:\w $ \[$(tput sgr0)\]"
 
-# 方案预览: ~ 
+# 方案预览: ~
 # export PS1=" \w "
 
 
@@ -41,12 +41,16 @@
 # export PS1="\u@\h:\w\n> \[$(tput sgr0)\]"
 # export PS1="\u@\h:\[$(tput sgr0)\]\[\033[38;5;196m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n> \[$(tput sgr0)\]"
 
-# 方案预览:  λ  
+# 方案预览:  λ
 # https://apple.stackexchange.com/questions/118464/how-to-find-out-which-terminal-app-iterm-or-terminal-is-running-from-within-ba
-# if [ "$TERM_PROGRAM" == "iTerm.app" ]; then
-	export PS1='\[\e[32m\]\n λ \[\e[36m\] '
-# else
-# 	export PS1='\[\e[32m\]\w λ \[\e[36m\] '
-# fi
+if [ "$TERM_PROGRAM" == "iTerm.app" ]; then
+	export PS1='\[\e[32m\]\nλ\[\e[36m\] '
+elif [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
+    export PS1='\[\e[32m\]\nλ\[\e[36m\] '
+elif  [ "$TERM_PROGRAM" == "WarpTerminal" ]; then
+    export PS1='\[\e[32m\]λ \[\e[36m\] '
+else
+    export PS1='\[\e[32m\]\w λ \[\e[36m\] '
+fi
 
-eval "$(starship init bash)"
+# eval "$(starship init bash)"

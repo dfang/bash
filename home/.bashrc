@@ -111,3 +111,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
+
+eval "$(direnv hook bash)"
+

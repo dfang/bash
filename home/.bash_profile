@@ -1,4 +1,4 @@
-# shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
+shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH";
 
 # like source ~/.env
@@ -100,4 +100,7 @@ export GOROOT=/usr/local/opt/go/libexec
 # java17 # default to Java 17
 
 # eval "$(ssh-agent)"
+
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
