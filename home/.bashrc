@@ -12,8 +12,8 @@ unset file;
 
 
 ################## History related settings
-export HISTSIZE=5000                     # 
-export HISTFILESIZE=100000               # 
+export HISTSIZE=5000                     #
+export HISTFILESIZE=100000               #
 shopt -s histappend                      # append to history, , rather than overwriting it
 export HISTIGNORE="ls:ps:history"        # Don’t save ls, ps and history commands:
 export HISTCONTROL=ignoredups:erasedups:ignorespace  # no duplicate entries, leading space hides commands from history
@@ -42,7 +42,7 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
-# Key bindings 
+# Key bindings
 # http://stackoverflow.com/questions/81272/is-there-any-way-in-the-os-x-terminal-to-move-the-cursor-word-by-word/
 # http://superuser.com/questions/357355/how-can-i-get-controlleft-arrow-to-go-back-one-word-in-iterm2
 # iTerm https://ruby-china.org/topics/1241
@@ -79,10 +79,7 @@ bind '"\e[1;5D": backward-word'
 # clash_proxy > /dev/null
 
 export GOS_UPSTREAM_ADDRESS=https://goproxy.cn
-
 export HOMEBREW_NO_AUTO_UPDATE=1
-
-#export GOPATH=$HOME/odev
 
 # for python user-site packages, eg. pipenv
 export PATH=$PATH:~/.local/bin
@@ -113,4 +110,3 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
 
 eval "$(direnv hook bash)"
-
