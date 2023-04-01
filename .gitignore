@@ -16,3 +16,4 @@ home/.ShadowsocksX-NG/*
 !home/.ShadowsocksX-NG/user-rule.txt
 
 .bash.local
+.bashrc.local

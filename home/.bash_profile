@@ -1,16 +1,20 @@
-shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
-export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH";
-
-# like source ~/.env
-export $(grep -v "^#" ~/.env | xargs)
+export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH"
 
 # Helper functions
 [[ -s "$HOME/.helper" ]] && source "$HOME/.helper"
+
+# shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
+
+# like source ~/.env
+# export $(grep -v "^#" ~/.env | xargs)
 
 [[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
 
 # printenv | grep ENABLE_
 
+# sample .env
+# ENABLE_ASDF=true
+# DEBUG_LOG=true
 if ${ENABLE_FASD:true}; then
   load_plugin "fasd"
 fi
@@ -53,13 +57,7 @@ export CPPFLAGS="-I/usr/local/opt/curl/include -I/usr/local/opt/readline/include
 export CFLAGS="-I/usr/local/opt/curl/include -I/usr/local/opt/readline/include -I/usr/local/opt/openssl/include"
 
 
-export FLUTTER_SDK_PATH='~/Library/flutter'
-export ANDROID_SDK_PATH="$HOME/Library/android/sdk"
-export ANDROID_HOME="$ANDROID_SDK_PATH"
-export PATH="$PATH:$ANDROID_SDK_PATH/tools/bin"
-alias sdkmanager="sdkmanager  --no_https \
-        --proxy=http --proxy_host=localhost \
-        --proxy_port=8118 "
+
 
 alias sync='echo rsync -avhP --exclude=.git --exclude-from=.gitignore --dry-run SRC DESTINATION'
 
@@ -89,7 +87,6 @@ alias short=" cut -f1 -d ' ' | tail -n +2"
 # helm ls | awk '/DEPLOYED/ { print $1 }'
 # kubectl get svc --all-namespaces -l chart=qor-v0.1.0
 
-export GOROOT=/usr/local/opt/go/libexec
 
 # to print the name and creation timestamp of each pod separated by a newline
 # kubectl get pods -o go-template --template='{{range .items}}{{printf "%s %s\n" .metadata.name .metadata.creationTimestamp}}{{end}}'
@@ -103,4 +100,36 @@ export GOROOT=/usr/local/opt/go/libexec
 
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# Environment Variables for Programming Languages
+
+# GO
+export GOS_UPSTREAM_ADDRESS=https://goproxy.cn
+# see asdf notes on notion
+export GOROOT="$(asdf where golang)/go"
+
+# FLUTTER
+export FLUTTER_SDK_PATH="$HOME/Library/flutter"
+
+# ANDROID
+export ANDROID_SDK_PATH="$HOME/Library/android/sdk"
+export ANDROID_HOME="$ANDROID_SDK_PATH"
+export PATH="$PATH:$ANDROID_SDK_PATH/tools/bin"
+alias sdkmanager="sdkmanager  --no_https \
+        --proxy=http --proxy_host=localhost \
+        --proxy_port=8118 "
+
+# JAVA
+# asdf list java
+
+# BUN
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Wasmer
+export WASMER_DIR="/Users/mj/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 

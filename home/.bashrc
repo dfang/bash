@@ -78,35 +78,24 @@ bind '"\e[1;5D": backward-word'
 
 # clash_proxy > /dev/null
 
-export GOS_UPSTREAM_ADDRESS=https://goproxy.cn
-export HOMEBREW_NO_AUTO_UPDATE=1
 
 # for python user-site packages, eg. pipenv
 export PATH=$PATH:~/.local/bin
 
-export AWS_REGION=us-west-1
 
 # proxy > /dev/null
 
-# PUT ssh alias and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY etc in .bash.local
+# BEST PRACTICES:
+# PUT ssh alias and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY, CLOUDFLARE_TOKEN etc in .bashrc.local
 # and add it to .gitignore
-source ~/.bash.local
+source ~/.bashrc.local
 
 bind "\C-o":jd
 
 
 
-export JAVA_HOME=/Users/mj/.asdf/installs/java/adoptopenjdk-8.0.332+9/
 
 
-# export BUN_INSTALL="$HOME/.bun"
-# export PATH="$BUN_INSTALL/bin:$PATH"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
-export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
-
-eval "$(direnv hook bash)"

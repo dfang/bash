@@ -48,7 +48,8 @@ if [ "$TERM_PROGRAM" == "iTerm.app" ]; then
 elif [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
     export PS1='\[\e[32m\]\nλ\[\e[36m\] '
 elif  [ "$TERM_PROGRAM" == "WarpTerminal" ]; then
-    export PS1='\[\e[32m\]λ \[\e[36m\] '
+    # export PS1='\[\e[32m\]λ \[\e[36m\] '
+    export PS1='\w \[\e[32m\]λ \[\e[36m\] '
 else
     export PS1='\[\e[32m\]\w λ \[\e[36m\] '
 fi

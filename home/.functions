@@ -88,7 +88,6 @@ try() {
 }
 
 try_go() {
-  try
 if [[ $1 == A ]]; then
     echo "A"
 else
@@ -103,6 +102,8 @@ func main() {
 }
 EOF
 fi
+go mod init github.com/dfang/example
+go mod tidy
 }
 
 try_elixir(){
