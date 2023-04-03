@@ -20,6 +20,10 @@ reload() {
     echo "Reloaded!!!"
 }
 
+vs-code-snippets() {
+    open ~/Library/Application\ Support/Code/User/snippets/
+}
+
 myip() {
   # ipconfig getifaddr en0
   ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
@@ -72,7 +76,15 @@ function take() {
   cd "$1" || exit
 }
 function mkd() {
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied, will create a random directory and cd into it"
+    dir=$(mktemp -d -u XXXXX)
+    echo $dir
+    mkdir -p $dir && cd "$_";
+  else
     mkdir -p "$@" && cd "$_";
+fi
 }
 alias mcd=mkd
 
@@ -88,10 +100,7 @@ try() {
 }
 
 try_go() {
-if [[ $1 == A ]]; then
-    echo "A"
-else
-    cat > main.go << EOF
+cat > main.go << EOF
 package main
 
 import (
@@ -101,7 +110,6 @@ func main() {
     fmt.Println("hello go")
 }
 EOF
-fi
 go mod init github.com/dfang/example
 go mod tidy
 }
