@@ -893,3 +893,8 @@ pskill() {
     kill -9 $pid
     echo "slaughtered."
 }
+
+# echo '[ { "Service": "realtime", "State": "running" } ]' | jsonArrayToTable | column -t
+function jsonArrayToTable(){
+     jq -r '(.[0] | ([keys[] | .] |(., map(length*"-")))), (.[] | ([keys[] as $k | .[$k]])) | @tsv' | column -t -s $'\t'
+}
