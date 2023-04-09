@@ -6,7 +6,7 @@ export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH"
 # shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
 
 # like source ~/.env
-# export $(grep -v "^#" ~/.env | xargs)
+export $(grep -v "^#" ~/.env | xargs)
 
 [[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
 
