@@ -95,7 +95,8 @@ bind "\C-o":jd
 
 
 
+export PATH=~/.vector/bin/:$PATH
+#source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
 
 
-
-
+source <(tea --magic=bash)
