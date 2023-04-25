@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'junegunn/vim-easy-align'
 
+  Plug 'jremmen/vim-ripgrep'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 
@@ -39,8 +40,13 @@ xmap ga <Plug>(EasyAlign)
 let mapleader = ","
 
 let loaded_netrwPlugin = 1
-autocmd vimenter * NERDTree
+"  autocmd vimenter * NERDTree
+" let g:NERDTreeHijackNetrw=0
 map <Leader>d :NERDTreeToggle<CR>
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 
 let g:fzf_layout = { 'window': 'let g:launching_fzf = 1 | keepalt topleft 100split enew' }
 nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
@@ -104,7 +110,7 @@ set cursorline
 set tabstop=2
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
+set nolist
 " Highlight searches
 set hlsearch
 " Ignore case of searches
@@ -112,7 +118,7 @@ set ignorecase
 " Highlight dynamically as pattern is typed
 set incsearch
 " Always show status line
-set laststatus=2
+"set laststatus=2
 " Enable mouse in all modes
 set mouse=a
 " Disable error bells
