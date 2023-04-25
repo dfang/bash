@@ -127,3 +127,7 @@ alias cnpm="npm --registry=https://registry.npmmirror.com \
 # 这种方法适合本地已经有安装包，需要反复安装的情景。只要把本地文件地址（绝对路径，精确到文件名）赋给环境变量 CYPRESS_INSTALL_BINARY ，再执行 npm install 时就能自动下载并安装。
 
 # 下面来看如何在不同系统下指定环境变量。
+
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
