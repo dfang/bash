@@ -1,4 +1,5 @@
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH"
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Helper functions
 [[ -s "$HOME/.helper" ]] && source "$HOME/.helper"
@@ -98,8 +99,10 @@ alias short=" cut -f1 -d ' ' | tail -n +2"
 
 # eval "$(ssh-agent)"
 
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+# https://docs.warp.dev/help/known-issues#list-of-incompatible-tools
+if  [ "$TERM_PROGRAM" != "WarpTerminal" ]; then
+  test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+fi
 
 
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -130,6 +133,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Wasmer
-export WASMER_DIR="/Users/mj/.wasmer"
+export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 

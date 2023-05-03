@@ -54,4 +54,4 @@ else
     export PS1='\[\e[32m\]\w λ \[\e[36m\] '
 fi
 
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
