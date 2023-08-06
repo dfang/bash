@@ -126,7 +126,7 @@
 [core]
 
     # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = /Users/mj/.gitignore_global
+	excludesfile = /Users/mj/.gitignore_global
     attributesfile = ~/.gitattributes
 
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -262,3 +262,7 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
+[credential]
+	helper = store
+[tag]
+	sort = -version:refname
