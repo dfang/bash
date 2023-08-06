@@ -2,7 +2,7 @@
 # . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
 # eval "$(direnv hook bash)"
-source "$HOME/.config/asdf-direnv/bashrc"
+# source "$HOME/.config/asdf-direnv/bashrc"
 
 # see asdf notes on notion
 # export GOROOT="$(asdf where golang)/go"

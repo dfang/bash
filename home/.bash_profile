@@ -112,7 +112,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # GO
 export GOS_UPSTREAM_ADDRESS=https://goproxy.cn
 # see asdf notes on notion
-export GOROOT="$(asdf where golang)/go"
+# export GOROOT="$(asdf where golang)/go"
+# rtx manages this
 
 # FLUTTER
 export FLUTTER_SDK_PATH="$HOME/Library/flutter"

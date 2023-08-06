@@ -27,9 +27,7 @@ export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
 export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
 
 # Go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-
+# rtx manages GOPATH, GOROOT
 # Rust Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -93,7 +91,7 @@ export ELECTRON_BUILDER_BINARIES_MIRROR=https://cdn.npmmirror.com/binaries/elect
 export SASS_BINARY_SITE=https://cdn.npmmirror.com/binaries/node-sass
 export SWC_BINARY_SITE=https://cdn.npmmirror.com/binaries/node-swc
 export NWJS_URLBASE=https://cdn.npmmirror.com/binaries/nwjs/v
-export PUPPETEER_DOWNLOAD_HOST=https://cdn.npmmirror.com/binaries
+# export PUPPETEER_DOWNLOAD_HOST=https://cdn.npmmirror.com/binaries
 export npm_config_sharp_binary_host=https://cdn.npmmirror.com/binaries/sharp
 export npm_config_sharp_libvips_binary_host=https://cdn.npmmirror.com/binaries/sharp-libvips
 export npm_config_robotjs_binary_host=https://cdn.npmmirror.com/binaries/robotjs
