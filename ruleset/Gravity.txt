@@ -11,3 +11,62 @@ payload:
   - DOMAIN-SUFFIX,grok.com
   - DOMAIN-SUFFIX,perplexity.ai
   - DOMAIN-SUFFIX,azureedge.net
+  # ChatGPT main site / ChatGPT 主站点
+  - DOMAIN-SUFFIX,chat.openai.com
+  # Claude AI frontend main domain / Claude AI 前端主域
+  - DOMAIN-SUFFIX,claude.ai
+  # Claude user-uploaded content domain / Claude 用户上传内容域名
+  - DOMAIN-SUFFIX,claudeusercontent.com
+  # Feature gate service / 功能开关服务
+  - DOMAIN-SUFFIX,featuregates.org
+  # Forefront AI (Claude alternative frontend) / Forefront AI（Claude 替代前端）
+  - DOMAIN-SUFFIX,forefront.ai
+  # Google Gemini Pro API / Google Gemini Pro API
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com
+  # Google API services (dependencies for Gemini etc.) / Google API 服务（Gemini 等依赖）
+  - DOMAIN-SUFFIX,googleapis.com
+  # xAI Grok main domain / xAI Grok 主域
+  - DOMAIN-SUFFIX,grok.com
+  # Certificate trust service / 证书信任服务
+  - DOMAIN-SUFFIX,identrust.com
+  # Customer support chat component / 客户支持聊天组件
+  - DOMAIN-SUFFIX,intercom.io
+  # Intercom CDN / Intercom CDN
+  - DOMAIN-SUFFIX,intercomcdn.com
+  # Stripe invoice subdomain / Stripe 发票子域
+  - DOMAIN-SUFFIX,invoice.stripe.com
+  # Feature flag management service / 功能旗帜管理服务
+  - DOMAIN-SUFFIX,launchdarkly.com
+
+  # OpenAI user-uploaded content / OpenAI 用户上传内容
+  - DOMAIN-SUFFIX,oaiusercontent.com
+
+  # OpenAI static resources / OpenAI 静态资源
+  - DOMAIN-SUFFIX,oaistatic.com
+
+  # OpenAI main domain / OpenAI 主域
+  - DOMAIN-SUFFIX,openai.com
+
+  # OpenAI payment page / OpenAI 支付页面
+  - DOMAIN-SUFFIX,pay.openai.com
+
+  # Perplexity AI / Perplexity AI
+  - DOMAIN-SUFFIX,perplexity.ai
+
+  # OpenAI Platform (API management) / OpenAI Platform（API 管理）
+  - DOMAIN-SUFFIX,platform.openai.com
+
+  # Poe multi-model aggregation platform / Poe 多模型聚合平台
+  - DOMAIN-SUFFIX,poe.com
+
+  # Error monitoring service / 错误监控服务
+  - DOMAIN-SUFFIX,sentry.io
+
+  # Data analytics service / 数据分析服务
+  - DOMAIN-SUFFIX,segment.io
+
+  # Stripe payment main domain / Stripe 支付主域
+  - DOMAIN-SUFFIX,stripe.com
+
+  # xAI official website / xAI 官网
+  - DOMAIN-SUFFIX,x.ai
