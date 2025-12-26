@@ -1,0 +1,8 @@
+# https://antigravity.google/
+payload:
+  - *.googleapis.com
+  - *.googleusercontent.com
+  - *.goog
+  - *.run.app
+  - open-vsx.org
+  - *.gvt1.com

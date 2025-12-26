@@ -1,0 +1,6 @@
+# NAME: Crypto
+payload:
+  - DOMAIN-KEYWORD,bybit
+  - DOMAIN-SUFFIX,binance.com
+  - DOMAIN-SUFFIX,bin.bnbstatic.com
+  - DOMAIN-SUFFIX,polymarket.com
