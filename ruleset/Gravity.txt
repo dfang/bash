@@ -1,8 +1,13 @@
 # https://antigravity.google/
+# https://gist.github.com/sarices/017da597ae6b28063bbdd52693d78385
 payload:
-  - *.googleapis.com
-  - *.googleusercontent.com
-  - *.goog
-  - *.run.app
-  - open-vsx.org
-  - *.gvt1.com
+  - DOMAIN-SUFFIX,googleapis.com
+  - DOMAIN-SUFFIX,googleusercontent.com
+  - DOMAIN-SUFFIX,goog
+  - DOMAIN-SUFFIX,run.app
+  - DOMAIN-SUFFIX,open-vsx.org
+  - DOMAIN-SUFFIX,gvt1.com
+  - DOMAIN-SUFFIX,x.ai
+  - DOMAIN-SUFFIX,grok.com
+  - DOMAIN-SUFFIX,perplexity.ai
+  - DOMAIN-SUFFIX,azureedge.net
