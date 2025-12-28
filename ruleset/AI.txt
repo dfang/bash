@@ -11,10 +11,10 @@ payload:
   - DOMAIN-SUFFIX,grok.com
   - DOMAIN-SUFFIX,perplexity.ai
   - DOMAIN-SUFFIX,azureedge.net
+  - DOMAIN-SUFFIX,openai.com
   - DOMAIN-SUFFIX,chat.openai.com
-  # Claude AI frontend main domain / Claude AI 前端主域
   - DOMAIN-SUFFIX,claude.ai
-  # Claude user-uploaded content domain / Claude 用户上传内容域名
+  - DOMAIN-SUFFIX,claudeusercontent.com
   - DOMAIN-SUFFIX,claudeusercontent.com
   # Feature gate service / 功能开关服务
   - DOMAIN-SUFFIX,featuregates.org
