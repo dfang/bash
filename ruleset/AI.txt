@@ -11,7 +11,6 @@ payload:
   - DOMAIN-SUFFIX,grok.com
   - DOMAIN-SUFFIX,perplexity.ai
   - DOMAIN-SUFFIX,azureedge.net
-  # ChatGPT main site / ChatGPT 主站点
   - DOMAIN-SUFFIX,chat.openai.com
   # Claude AI frontend main domain / Claude AI 前端主域
   - DOMAIN-SUFFIX,claude.ai
