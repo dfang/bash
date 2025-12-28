@@ -15,6 +15,7 @@ payload:
   - DOMAIN-SUFFIX,openai.com
   - DOMAIN-SUFFIX,chat.openai.com
   - DOMAIN-SUFFIX,chatgpt.com
+  - DOMAIN-SUFFIX,oaiusercontent.com
   - DOMAIN-SUFFIX,claude.ai
   - DOMAIN-SUFFIX,claudeusercontent.com
   - DOMAIN-SUFFIX,claudeusercontent.com
