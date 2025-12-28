@@ -1,5 +1,6 @@
 # https://antigravity.google/
 # https://gist.github.com/sarices/017da597ae6b28063bbdd52693d78385
+# NAME: AI
 payload:
   - DOMAIN-SUFFIX,googleapis.com
   - DOMAIN-SUFFIX,googleusercontent.com
@@ -13,6 +14,7 @@ payload:
   - DOMAIN-SUFFIX,azureedge.net
   - DOMAIN-SUFFIX,openai.com
   - DOMAIN-SUFFIX,chat.openai.com
+  - DOMAIN-SUFFIX,chatgpt.com
   - DOMAIN-SUFFIX,claude.ai
   - DOMAIN-SUFFIX,claudeusercontent.com
   - DOMAIN-SUFFIX,claudeusercontent.com
