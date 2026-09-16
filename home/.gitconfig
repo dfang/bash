@@ -119,14 +119,12 @@
     resync = !legit resync
 
 [apply]
-
     # Detect whitespace errors when applying a patch
     whitespace = fix
 
 [core]
-
     # Use custom `.gitignore` and `.gitattributes`
-	excludesfile = /Users/mj/.gitignore_global
+    excludesfile = ~/.gitignore_global
     attributesfile = ~/.gitattributes
 
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
@@ -141,60 +139,53 @@
     # Prevent showing files whose names contain non-ASCII symbols as unversioned.
     # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
     precomposeunicode = false
+	sparseCheckout = true
+	sshCommand = ssh
+  # sshCommand = ssh -o 'ProxyCommand ncat --proxy 127.0.0.1:7890 %h %p'
 
 [color]
-
     # Use colors in Git commands that are capable of colored output when
     # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
     ui = auto
 
 [color "branch"]
-
     current = yellow reverse
     local = yellow
     remote = green
 
 [color "diff"]
-
     meta = yellow bold
     frag = magenta bold # line info
     old = red # deletions
     new = green # additions
 
 [color "status"]
-
     added = yellow
     changed = green
     untracked = cyan
 
 [commit]
-
     # https://help.github.com/articles/signing-commits-using-gpg/
 	  # gpgsign = true
 	  # template = /Users/mj/.stCommitMsg
 
 [diff]
-
     # Detect copies as well as renames
     renames = copies
 
 [diff "bin"]
-
     # Use `hexdump` to diff binary files
     textconv = hexdump -v -C
 
 [help]
-
     # Automatically correct and execute mistyped commands
     autocorrect = 1
 
 [merge]
-
     # Include summaries of merged commits in newly created merge commit messages
     log = true
 
 [mergetool]
-
     keepBackup = true
 
 [difftool "sourcetree"]
@@ -202,7 +193,6 @@
 	path = 
 
 [push]
-
     # Use the Git 1.x.x default to avoid errors on machines with old Git
     # installations. To use `simple` instead, add this to your `~/.extra` file:
     # `git config --global push.default simple`. See http://git.io/mMah-w.
@@ -211,33 +201,24 @@
     followTags = true
 
 [branch]
-
     autosetuprebase = always
 
 # URL shorthands
-
 [url "git@github.com:"]
-
     insteadOf = "gh:"
     pushInsteadOf = "github:"
     pushInsteadOf = "git://github.com/"
 
 [url "git://github.com/"]
-
     insteadOf = "github:"
 
 [url "git@gist.github.com:"]
-
     insteadOf = "gst:"
     pushInsteadOf = "gist:"
     pushInsteadOf = "git://gist.github.com/"
 
 [url "git://gist.github.com/"]
-
     insteadOf = "gist:"
-
-[filter "lfs"]
-    required = true
 
 [filter "media"]
     clean = git-media-clean %f
@@ -255,14 +236,14 @@
     signingkey = 855D3A9E2FBFCC84787FC8A43B0F7D1148EB3839
 
 [init]
-    templatedir = ~/.git-template-with-git-hooks
-	defaultBranch = master
+    # templatedir = ~/.git-template-with-git-hooks
+    defaultBranch = master
 
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [credential]
-	helper = store
+	helper = osxkeychain
 [tag]
-	sort = -version:refname
+    sort = -version:refname

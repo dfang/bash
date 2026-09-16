@@ -38,7 +38,7 @@ ip-location() {
 proxy() {
     # local ip=$(ifconfig en9 | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}')
     local ip=127.0.0.1
-    export http_proxy="http://$ip:8118" # http代理地址
+    export http_proxy="http://$ip:7890" # http代理地址
     export no_proxy="localhost,127.0.0.0/0,192.168.0.0/16,10.0.0.0/0,kubernetes.docker.internal"
     # export {http,https,ftp}_proxy="http://`ipconfig getifaddr en0`:8118" # http代理地址
     # export {HTTP,HTTPS}_PROXY=$http_proxy
@@ -492,7 +492,7 @@ docker-compose-restart(){
 	docker-compose start $@
 }
 
-function godoc() {
+function godoc1() {
 	open http://localhost:6060/pkg
 	godoc --http :6060
 }
@@ -909,3 +909,11 @@ function tldrf() {
   tldr --list | fzf --preview "tldr {1}" --preview-window=right,60% | xargs tldr
 }
 
+# https://gist.github.com/mihow/9c7f559807069a03e302605691f85572
+# https://andrew.red/posts/how-to-load-dotenv-file-from-shell
+function dotenv() {
+  set -a
+  [ -f ~/.env ] && . ~/.env
+  [ -f ~/.env.local ] && . ~/.env.local
+  set +a
+}

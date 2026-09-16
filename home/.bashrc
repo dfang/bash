@@ -79,15 +79,17 @@ bind '"\e[1;5D": backward-word'
 # clash_proxy > /dev/null
 
 
-# for python user-site packages, eg. pipenv
-export PATH=$PATH:~/.local/bin
+# # for python user-site packages, eg. pipenv
+# export PATH=$PATH:~/.local/bin
 
+# export PATH=$HOME/go/bin:$PATH
 
 # proxy > /dev/null
 
 # BEST PRACTICES:
 # PUT ssh alias and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY, CLOUDFLARE_TOKEN etc in .bashrc.local
 # and add it to .gitignore
+
 source ~/.bashrc.local
 
 bind "\C-o":jd
@@ -100,3 +102,40 @@ export PATH=~/.vector/bin/:$PATH
 
 
 # source <(tea --magic=bash)
+# eval "$(rtx activate bash)"
+
+# export RTX_DEBUG=1
+
+# proxy
+export RUST_BACKTRACE=full
+# eval "$(rtx activate --status -s bash)"
+# eval "$(rtx hook-env --status -s bash)"
+
+export PATH=~/go/bin:$PATH
+
+dotenv;
+alias ssh="assh wrapper ssh --"
+. "$HOME/.cargo/env"
+
+
+
+alias hb='open $1 -a /Applications/HBuilderX.app'
+
+eval "$(/Users/kb24/.local/bin/mise activate bash)"
+
+# pnpm
+export PNPM_HOME="/Users/kb24/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+alias uuidgen='uuidgen | tr -d "\n" | tr "[:upper:]" "[:lower:]" | pbcopy; pbpaste'
+export PATH="/Users/kb24/.pixi/bin:$PATH"
+
+
+export PATH="/Applications/wechatwebdevtools.app/Contents/MacOS:$PATH"
+
+
+export GEMINI_API_KEY="AIzaSyDMXgeGcf_9la3aBtMOezAnqmvXTMsp-DY"

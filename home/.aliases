@@ -159,7 +159,7 @@ alias empty_trash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo
 
 alias python3_server='python3 -m http.server'
 alias python2_server='python -m SimpleHTTPServer'
-alias caddy_server='caddy file-server --root . --listen :5555'
+alias caddy_server='caddy file-server --root . --listen :5555 --browse'
 
 # alias clash_config="code ~/.config/clash/config.yaml"
 

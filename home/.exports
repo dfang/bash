@@ -101,7 +101,7 @@ export npm_config_fsevents_binary_host=https://cdn.npmmirror.com/binaries/fseven
 
 # CYPRESS_DOWNLOAD_MIRROR
 # https://blog.csdn.net/weixin_36221149/article/details/116761778
-export CYPRESS_DOWNLOAD_MIRROR=https://download.cypress.io/desktop
+export CYPRESS_DOWNLOAD_MIRROR=https://download.cypress.io/
 # set CYPRESS_INSTALL_BINARY=D:\path\to\your\app\cypress.zip
 
 alias cnpm="npm --registry=https://registry.npmmirror.com \
@@ -128,4 +128,4 @@ alias cnpm="npm --registry=https://registry.npmmirror.com \
 
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
+export TMPDIR=/tmp/

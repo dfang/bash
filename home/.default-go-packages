@@ -1,0 +1,12 @@
+# rtx
+github.com/cosmtrek/air@latest
+github.com/dfang/xgit
+github.com/dfang/xwget
+github.com/dfang/xcurl
+github.com/hibiken/asynq/tools/asynq
+github.com/Dreamacro/clash
+github.com/sosedoff/pgweb
+honnef.co/go/tools/cmd/staticcheck@latest
+github.com/golangci/golangci-lint/cmd/golangci-lint@v1.53.3
+github.com/go-critic/go-critic/cmd/gocritic@latest
+github.com/xo/xo@latest

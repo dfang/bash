@@ -137,3 +137,23 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
+. "$HOME/.cargo/env"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/kb24/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/kb24/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/kb24/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/kb24/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# Added by Windsurf
+export PATH="/Users/kb24/.codeium/windsurf/bin:$PATH"
