@@ -1,0 +1,5 @@
+# NAME: For Antigravity
+payload:
+  - DOMAIN-SUFFIX,antigravity-unleash.goog
+  - DOMAIN-SUFFIX,antigravity.google
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com
