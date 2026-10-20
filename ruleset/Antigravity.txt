@@ -1,5 +1,7 @@
 # NAME: For Antigravity
 payload:
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com
+  - DOMAIN-SUFFIX,daily-cloudcode-pa.googleapis.com
   - DOMAIN-SUFFIX,antigravity-unleash.goog
   - DOMAIN-SUFFIX,antigravity.google
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com
+  
